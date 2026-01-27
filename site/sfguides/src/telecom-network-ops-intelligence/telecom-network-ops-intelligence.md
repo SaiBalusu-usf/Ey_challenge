@@ -1,5 +1,5 @@
 author: Joviane Bellegarde
-id: network-operations-reporting-analytics-snowflake-intelligence
+id: telecom-network-ops-intelligence
 summary: Build an end-to-end telecom network operations solution with 4 persona dashboards, 3D visualization, and Snowflake Intelligence for natural language queries
 categories: snowflake-site:taxonomy/solution-center/certification/quickstart, snowflake-site:taxonomy/solution-center/certification/certified-solution, snowflake-site:taxonomy/industry/telecommunications, snowflake-site:taxonomy/product/ai, snowflake-site:taxonomy/snowflake-feature/streamlit-in-snowflake, snowflake-site:taxonomy/snowflake-feature/cortex-ai
 environments: web
@@ -7,7 +7,7 @@ language: en
 status: Published
 feedback link: https://github.com/Snowflake-Labs/sfguides/issues
 tags: Getting Started, Telecom, Network Operations, Streamlit, Snowflake Intelligence, Cortex, Semantic View, 5G, 4G
-fork repo link: https://github.com/Snowflake-Labs/sfguide-network-operations-reporting-analytics-snowflake-intelligence
+fork repo link: https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence
 
 # Network Operations Reporting and Analytics with Snowflake Intelligence
 
