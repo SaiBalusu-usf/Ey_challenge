@@ -1,4 +1,4 @@
-author: Sreedhar Rao, Pedro Jose, Vikas Malik, Siddharth Pandit, Joviane Bellegarde
+author: Sreedhar Rao, Pedro Jose, Siddharth Pandit, Joviane Bellegarde
 id: telecom-network-ops-intelligence
 summary: Build an end-to-end telecom network operations solution with 4 persona dashboards, 3D visualization, and Snowflake Intelligence for natural language queries
 categories: snowflake-site:taxonomy/solution-center/certification/quickstart, snowflake-site:taxonomy/solution-center/certification/certified-solution, snowflake-site:taxonomy/industry/telecommunications, snowflake-site:taxonomy/product/ai, snowflake-site:taxonomy/snowflake-feature/streamlit-in-snowflake, snowflake-site:taxonomy/snowflake-feature/cortex-ai
