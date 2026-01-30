@@ -196,6 +196,63 @@ def get_snowflake_session():
 # Initialize session
 snowflake_session = get_snowflake_session()
 
+# Hardcoded database name for sfquickstarts guide
+CURRENT_DB = "NETWORK_OPERATIONS"
+SOLUTION_PREFIX = "NETWORK_OPERATIONS"
+
+# ========================================
+# CORTEX AGENT FUNCTION
+# ========================================
+
+def call_cortex_agent(query: str) -> str:
+    """Call the Cortex Agent via REST API and return the response."""
+    if not snowflake_session:
+        return "❌ No Snowflake session available. Please ensure you're running in Snowflake."
+    
+    try:
+        import _snowflake
+        
+        # Hardcoded agent name for sfquickstarts guide
+        agent_name = "NETWORK_OPERATIONS_AGENT"
+        endpoint = f"/api/v2/databases/SNOWFLAKE_INTELLIGENCE/schemas/AGENTS/agents/{agent_name}:run"
+        
+        payload = {
+            "messages": [{"role": "user", "content": [{"type": "text", "text": query}]}]
+        }
+        
+        response = _snowflake.send_snow_api_request(
+            "POST",
+            endpoint,
+            {},
+            {},
+            payload,
+            {},
+            30000
+        )
+        
+        if response.get("status", 0) == 200:
+            response_body = response.get("content", "")
+            full_text = ""
+            
+            try:
+                events = json.loads(response_body)
+                for event in events:
+                    event_type = event.get("event", "")
+                    data = event.get("data", {})
+                    
+                    if event_type == "response":
+                        for content_item in data.get("content", []):
+                            if content_item.get("type") == "text":
+                                full_text += content_item.get("text", "")
+            except json.JSONDecodeError:
+                return f"❌ Failed to parse response: {response_body[:200]}"
+            
+            return full_text if full_text else "No text response from agent."
+        else:
+            return f"❌ Agent API error: {response.get('status', 'unknown')} - {response.get('content', '')}"
+    except Exception as e:
+        return f"❌ Error calling agent: {str(e)}"
+
 # ========================================
 # KPI CALCULATION FUNCTIONS
 # ========================================
@@ -2792,7 +2849,7 @@ if selected_page == "🎯 Executive Introduction":
     
     # Connection Status (simplified)
     if snowflake_session:
-        st.success("✅ Live connection to UC1_NETWORK_OPERATIONS database")
+        st.success(f"✅ Live connection to {CURRENT_DB} database")
     else:
         st.info("ℹ️ Demo mode - showcasing platform capabilities")
 
@@ -4055,18 +4112,26 @@ elif selected_page == "👨‍💻 Network Engineer Dashboard":
     with ai_col1:
         st.markdown("**🎯 Quick Insights:**")
         if st.button("❓ What domain shows most degradation?", type="secondary"):
-            st.write("🤖 **Cortex Analysis**: Based on current KPIs, the Transport domain shows highest packet loss (avg 2.3%) affecting 6 cell sites in the Porto region.")
+            with st.spinner("🧠 Cortex is analyzing..."):
+                response = call_cortex_agent("What domain shows most degradation?")
+                st.write(f"🤖 **Cortex Analysis**: {response}")
         
         if st.button("📍 Which sites have critical issues?", type="secondary"):
-            st.write("🤖 **Cortex Analysis**: 3 sites currently show critical status: CS_PORTO_007 (RRC success 45%), CS_BRAGA_003 (zero throughput), CS_LISBOA_012 (transport timeout).")
+            with st.spinner("🧠 Cortex is analyzing..."):
+                response = call_cortex_agent("Which sites have critical issues?")
+                st.write(f"🤖 **Cortex Analysis**: {response}")
     
     with ai_col2:
         st.markdown("**🔍 Advanced Queries:**")
         if st.button("🌐 Show transport impact correlation", type="secondary"):
-            st.write("🤖 **Cortex Analysis**: Transport device TR_NORTE_001 affects 8 cell sites. Current latency 145ms (↑87% from baseline) impacts handover success rates across affected sites.")
+            with st.spinner("🧠 Cortex is analyzing..."):
+                response = call_cortex_agent("Show transport impact correlation")
+                st.write(f"🤖 **Cortex Analysis**: {response}")
         
         if st.button("📊 Predict capacity constraints", type="secondary"):
-            st.write("🤖 **Cortex Analysis**: Lisboa region PRB utilization trending 73% (↑12% vs last week). Projected to exceed 80% threshold in 2 weeks based on current growth rate.")
+            with st.spinner("🧠 Cortex is analyzing..."):
+                response = call_cortex_agent("Predict capacity constraints")
+                st.write(f"🤖 **Cortex Analysis**: {response}")
     
     # Custom query input
     st.markdown("**💬 Ask Your Question:**")
@@ -4075,38 +4140,8 @@ elif selected_page == "👨‍💻 Network Engineer Dashboard":
     
     if user_query and st.button("🔍 Analyze", type="primary"):
         with st.spinner("🧠 Cortex is analyzing your query..."):
-            time.sleep(2)  # Simulate AI processing
-            st.success("🤖 **Cortex Response**: Your query has been processed. In a production environment, this would provide intelligent insights based on your specific network data using Snowflake's Cortex AI capabilities.")
-    
-    else:
-        st.warning("⚠️ **Database Connection Required**")
-        st.info("""
-        💡 **To access live network data:**
-        
-        1. **Verify Database Connection**: Check Snowflake session is active
-        2. **Confirm Data Availability**: Ensure tables are populated with network data
-        3. **Check Permissions**: Verify access to ANALYTICS schema tables
-        4. **Review Table Structure**: Confirm DIM_CELL_SITE and FACT_RAN_PERFORMANCE tables exist
-        
-        📊 **Current Status**: Running in demonstration mode with simulated data
-        """)
-        
-        # Show what would be available with live data
-        st.markdown("#### 🎯 Available with Live Database Connection:")
-        
-        live_features_col1, live_features_col2 = st.columns(2)
-        
-        with live_features_col1:
-            st.write("✅ **Interactive Portugal Map** with 450+ real cell sites")
-            st.write("✅ **Real-time KPI Calculations** from performance data")
-            st.write("✅ **Historical Trending** with 5-minute resolution")
-            st.write("✅ **Geospatial Analysis** using native Snowflake functions")
-        
-        with live_features_col2:
-            st.write("✅ **Health Status Monitoring** based on actual metrics")
-            st.write("✅ **Domain Filtering** across RAN/Core/Transport")
-            st.write("✅ **Performance Correlation** between network layers")
-            st.write("✅ **AI-Powered Insights** via Snowflake Cortex")
+            response = call_cortex_agent(user_query)
+            st.success(f"🤖 **Cortex Response**: {response}")
 
 elif selected_page == "📊 Network Performance Dashboard":
     st.markdown("""
@@ -6926,9 +6961,9 @@ elif selected_page == "📊 Network Performance Dashboard":
                             )
                             
                             # Calculate changes
-                            comparison_full['THROUGHPUT_CHANGE'] = comparison_full['AVG_THROUGHPUT_CURRENT'] - comparison_full['AVG_THROUGHPUT']
-                            comparison_full['THROUGHPUT_CHANGE_PCT'] = (comparison_full['THROUGHPUT_CHANGE'] / comparison_full['AVG_THROUGHPUT']) * 100
-                            comparison_full['SUCCESS_RATE_CHANGE'] = comparison_full['AVG_SUCCESS_RATE_CURRENT'] - comparison_full['AVG_SUCCESS_RATE']
+                            comparison_full['THROUGHPUT_CHANGE'] = comparison_full['AVG_THROUGHPUT_CURRENT'] - comparison_full['AVG_THROUGHPUT_PREVIOUS']
+                            comparison_full['THROUGHPUT_CHANGE_PCT'] = (comparison_full['THROUGHPUT_CHANGE'] / comparison_full['AVG_THROUGHPUT_PREVIOUS']) * 100
+                            comparison_full['SUCCESS_RATE_CHANGE'] = comparison_full['AVG_SUCCESS_RATE_CURRENT'] - comparison_full['AVG_SUCCESS_RATE_PREVIOUS']
                             
                             st.markdown(f"**Comparing:** {start_date} to {end_date} vs {comp_start} to {comp_end}")
                             
@@ -6949,7 +6984,7 @@ elif selected_page == "📊 Network Performance Dashboard":
                                 fig_throughput_comp.add_trace(go.Bar(
                                     name='Previous Period',
                                     x=[f"{r['REGION']}-{r['TECHNOLOGY']}" for _, r in comparison_full.iterrows()],
-                                    y=comparison_full['AVG_THROUGHPUT'],
+                                    y=comparison_full['AVG_THROUGHPUT_PREVIOUS'],
                                     marker_color='#1f77b4'
                                 ))
                                 
@@ -6975,7 +7010,7 @@ elif selected_page == "📊 Network Performance Dashboard":
                                 fig_success_comp.add_trace(go.Bar(
                                     name='Previous Period',
                                     x=[f"{r['REGION']}-{r['TECHNOLOGY']}" for _, r in comparison_full.iterrows()],
-                                    y=comparison_full['AVG_SUCCESS_RATE'],
+                                    y=comparison_full['AVG_SUCCESS_RATE_PREVIOUS'],
                                     marker_color='#d62728'
                                 ))
                                 
@@ -12675,9 +12710,9 @@ elif selected_page == "🏗️ Architecture":
         st.markdown("""
         - [Database Architecture](#database-architecture)
         - [Schema & Table Structure](#schema-table-structure)
-        - [Real vs Demo Data Strategy](#real-vs-demo-data-strategy)
+        - [Real vs Business Simulation Data Strategy](#real-vs-business-simulation-data-strategy)
         - [Data Lineage & Flow](#data-lineage-flow)
-        - [Table Relationships](#table-relationships)
+        - [Table Relationships & Data Model](#table-relationships-data-model)
         - [KPI Calculation Logic](#kpi-calculation-logic)
         """)
     
@@ -12685,8 +12720,8 @@ elif selected_page == "🏗️ Architecture":
     st.markdown("---")
     st.subheader("🏗️ Database Architecture")
     
-    st.markdown("""
-    **Snowflake Database:** `UC1_NETWORK_OPERATIONS`  
+    st.markdown(f"""
+    **Snowflake Database:** `{CURRENT_DB}`  
     **Purpose:** Unified data platform for 4G/5G network operations, analytics, and correlation  
     **Data Strategy:** Combination of real network performance data and business simulation data for complete demo scenarios
     """)
@@ -12704,7 +12739,7 @@ elif selected_page == "🏗️ Architecture":
         
         # Database node
         db_diagram.attr('node', fillcolor='#1f4e79', fontcolor='white', fontsize='14', penwidth='3')
-        db_diagram.node('DB', 'UC1_NETWORK_OPERATIONS\nSnowflake Database')
+        db_diagram.node('DB', f'{CURRENT_DB}\nSnowflake Database')
         
         # Schema nodes with colors and better organization
         schemas = {
@@ -13218,7 +13253,7 @@ elif selected_page == "🏗️ Architecture":
         
         st.dataframe(ran_kpis, use_container_width=True, hide_index=True)
         
-        st.code("""
+        st.code(f"""
         -- Example: RRC Success Rate Calculation
         SELECT 
             DATE_TRUNC('hour', Timestamp) as hour,
@@ -13227,7 +13262,7 @@ elif selected_page == "🏗️ Architecture":
                 THEN (RRC_ConnEstabSucc::FLOAT / RRC_ConnEstabAtt * 100)
                 ELSE NULL 
             END) as rrc_success_rate
-        FROM ANALYTICS.FACT_RAN_PERFORMANCE
+        FROM {CURRENT_DB}.ANALYTICS.FACT_RAN_PERFORMANCE
         WHERE Timestamp >= DATEADD(hour, -24, CURRENT_TIMESTAMP())
         GROUP BY hour
         ORDER BY hour;
@@ -13528,15 +13563,15 @@ elif selected_page == "🏗️ Architecture":
         
         st.graphviz_chart(cap_flow.source)
         
-        st.code("""
+        st.code(f"""
         # Production: Snowflake Cortex ML Time Series Forecasting
         
-        CREATE OR REPLACE MODEL capacity_forecast_model
+        CREATE OR REPLACE MODEL {CURRENT_DB}.ANALYTICS.capacity_forecast_model
         AS SELECT 
             Cell_ID,
             DATE_TRUNC('day', Timestamp) as date,
             AVG(DL_PRB_Utilization) as utilization
-        FROM ANALYTICS.FACT_RAN_PERFORMANCE
+        FROM {CURRENT_DB}.ANALYTICS.FACT_RAN_PERFORMANCE
         WHERE Timestamp >= DATEADD(day, -60, CURRENT_TIMESTAMP())
         GROUP BY Cell_ID, date
         ORDER BY date;
@@ -13548,9 +13583,8 @@ elif selected_page == "🏗️ Architecture":
             FORECAST_VALUE as predicted_utilization,
             LOWER_BOUND,
             UPPER_BOUND
-        FROM TABLE(FORECAST(
-            MODEL => capacity_forecast_model,
-            HORIZON => 30
+        FROM TABLE({CURRENT_DB}.ANALYTICS.capacity_forecast_model!FORECAST(
+            FORECASTING_PERIODS => 30
         ));
         """, language='sql')
         
@@ -14196,7 +14230,7 @@ elif selected_page == "🏗️ Architecture":
             all_table_data = snowflake_session.sql("""
                 SELECT table_schema, table_name
                 FROM INFORMATION_SCHEMA.TABLES
-                WHERE table_catalog = 'UC1_NETWORK_OPERATIONS'
+                WHERE table_catalog = '{CURRENT_DB}'
                     AND table_type = 'BASE TABLE'
                 ORDER BY table_schema, table_name
             """).collect()
@@ -14542,7 +14576,7 @@ elif selected_page == "🏗️ Architecture":
             <div class="metric-card">
                 <h4>🛠️ Snowflake Features Used</h4>
                 <ul>
-                    <li><strong>Database:</strong> UC1_NETWORK_OPERATIONS</li>
+                    <li><strong>Database:</strong> {CURRENT_DB}</li>
                     <li><strong>Schemas:</strong> 6 logical domains</li>
                     <li><strong>Tables:</strong> Dimension + Fact tables</li>
                     <li><strong>Views:</strong> KPI calculations</li>
@@ -14597,7 +14631,7 @@ elif selected_page == "🏗️ Architecture":
                         clustering_key,
                         'Active' as status
                     FROM INFORMATION_SCHEMA.TABLES 
-                    WHERE table_catalog = 'UC1_NETWORK_OPERATIONS'
+                    WHERE table_catalog = '{CURRENT_DB}'
                         AND clustering_key IS NOT NULL
                     LIMIT 5
                 """).collect()
@@ -14807,7 +14841,7 @@ elif selected_page == "🏗️ Architecture":
     
     # Resources
     security_diagram.attr('node', fillcolor='lightyellow', shape='folder')
-    security_diagram.node('DATABASE', 'UC1_NETWORK_OPERATIONS\nDatabase')
+    security_diagram.node('DATABASE', f'{CURRENT_DB}\nDatabase')
     security_diagram.node('SCHEMAS', 'Schemas\n(RAN, CORE, TRANSPORT)')
     security_diagram.node('TABLES', 'Tables & Views')
     security_diagram.node('STREAMLIT_APP', 'Streamlit App')
