@@ -9,7 +9,7 @@ feedback link: https://github.com/Snowflake-Labs/sfguides/issues
 tags: Getting Started, Telecom, Network Operations, Streamlit, Snowflake Intelligence, Cortex, Semantic View, 5G, 4G
 fork repo link: https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence
 
-# Network Operations Reporting and Analytics with Snowflake Intelligence
+# End-to-End Telecom Network Operations Reporting and Analytics
 
 ## Overview
 
