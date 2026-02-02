@@ -87,7 +87,7 @@ In this step, you'll create all the Snowflake objects needed for the MONAI solut
 1. In Snowsight, click `Projects`, then `Workspaces` in the left navigation, or <a href="https://app.snowflake.com/_deeplink/#/workspaces?utm_source=quickstart&utm_medium=quickstart&utm_campaign=-us-en-all&utm_content=app-distributed-medical-image-processing-with-monai" target="_blank">click here</a> to go there directly
 2. Click `+ Add new` to create a new Workspace
 3. Click `SQL File` to create a new SQL file
-4. Copy the setup script from <a href="https://github.com/Snowflake-Labs/sfquickstarts/blob/main/site/sfguides/src/distributed-medical-image-processing-with-monai/assets/scripts/setup.sql" target="_blank">setup.sql</a> and paste it into your SQL file
+4. Copy the setup script from <a href="https://github.com/Snowflake-Labs/sfguide-distributed-medical-image-processing-with-monai/blob/main/scripts/setup.sql" target="_blank">setup.sql</a> and paste it into your SQL file
 
 ### Step 2: Run Infrastructure Setup (Sections 1-7)
 
@@ -102,9 +102,9 @@ Run the first part of the setup script to create:
 ### Step 3: Import Notebooks
 
 Download each notebook from GitHub:
-- <a href="https://github.com/Snowflake-Labs/sfquickstarts/blob/main/site/sfguides/src/distributed-medical-image-processing-with-monai/assets/notebooks/01_ingest_data.ipynb" target="_blank">01_ingest_data.ipynb</a>
-- <a href="https://github.com/Snowflake-Labs/sfquickstarts/blob/main/site/sfguides/src/distributed-medical-image-processing-with-monai/assets/notebooks/02_model_training.ipynb" target="_blank">02_model_training.ipynb</a>
-- <a href="https://github.com/Snowflake-Labs/sfquickstarts/blob/main/site/sfguides/src/distributed-medical-image-processing-with-monai/assets/notebooks/03_model_inference.ipynb" target="_blank">03_model_inference.ipynb</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-distributed-medical-image-processing-with-monai/blob/main/notebooks/01_ingest_data.ipynb" target="_blank">01_ingest_data.ipynb</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-distributed-medical-image-processing-with-monai/blob/main/notebooks/02_model_training.ipynb" target="_blank">02_model_training.ipynb</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-distributed-medical-image-processing-with-monai/blob/main/notebooks/03_model_inference.ipynb" target="_blank">03_model_inference.ipynb</a>
 
 Then import each notebook into Snowflake:
 
