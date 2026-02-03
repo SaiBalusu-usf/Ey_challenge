@@ -1,26 +1,38 @@
-id: quantitative-research-with-aisql-and-cortex
+id: quantitative-research-with-ai-functions-and-cortex-code
 language: en
-summary: Build an AI-powered quantitative research pipeline using Cortex AI Functions, ML Model Registry, and Snowflake Intelligence to transform earnings call transcripts into actionable investment insights.
-categories: snowflake-site:taxonomy/industry/financial-services, snowflake-site:taxonomy/product/ai, snowflake-site:taxonomy/product/analytics, snowflake-site:taxonomy/snowflake-feature/ingestion/conversational-assistants, snowflake-site:taxonomy/snowflake-feature/cortex-llm-functions, snowflake-site:taxonomy/snowflake-feature/cortex-analyst, snowflake-site:taxonomy/snowflake-feature/cortex-search, snowflake-site:taxonomy/snowflake-feature/snowflake-intelligence, snowflake-site:taxonomy/snowflake-feature/marketplace-and-integrations, snowflake-site:taxonomy/snowflake-feature/snowpark
+summary: Build an AI-powered quantitative research pipeline using Cortex Code, Cortex AI Functions, ML Model Registry, and Snowflake Intelligence to transform earnings call transcripts into actionable investment insights.
+categories: snowflake-site:taxonomy/industry/financial-services, snowflake-site:taxonomy/product/ai, snowflake-site:taxonomy/product/analytics, snowflake-site:taxonomy/snowflake-feature/ingestion/conversational-assistants, snowflake-site:taxonomy/snowflake-feature/cortex-llm-functions, snowflake-site:taxonomy/snowflake-feature/cortex-analyst, snowflake-site:taxonomy/snowflake-feature/cortex-search, snowflake-site:taxonomy/snowflake-feature/snowflake-intelligence, snowflake-site:taxonomy/snowflake-feature/marketplace-and-integrations, snowflake-site:taxonomy/snowflake-feature/snowpark, snowflake-site:taxonomy/snowflake-feature/cortex-code
 environments: web
 status: Hidden
-authors: Harry Yu, Dureti Shemsi
+authors: Harry Yu, Serena Zou, Dureti Shemsi
 feedback link: https://github.com/Snowflake-Labs/sfguides/issues
 fork repo link: https://github.com/Snowflake-Labs/sfguide-quantitative-research-aisql-cortex
 
-# Quantitative Research with AI Functions and Cortex Using Snowflake Public Data Free
+# Quantitative Research with AI Functions and Cortex Code using Snowflake Public Data
 
 ## Overview
 
-This guide demonstrates how to build an end-to-end AI-powered quantitative research pipeline using Snowflake's native AI capabilities. Financial analysts spend countless hours manually reviewing earnings call transcripts to gauge market sentiment and identify investment opportunities—this guide automates and scales that process.
+This guide demonstrates how to build an end-to-end AI-powered quantitative research pipeline using Snowflake's native AI capabilities—with **Cortex Code** as your AI coding assistant throughout the journey.
 
-Using publicly available earnings call data from Dow Jones 30 companies (via Snowflake Marketplace), this guide walks you through extracting sentiment with Cortex AI Functions, building predictive ML models, and creating an intelligent conversational agent accessible through Snowflake Intelligence.
+Financial analysts spend countless hours manually reviewing earnings call transcripts to gauge market sentiment and identify investment opportunities. This guide automates and scales that process while showing you how to use **Cortex Code** to build, understand, and extend the solution through natural language conversation.
+
+Using publicly available earnings call data from Dow Jones 30 companies (via Snowflake Marketplace), this guide walks you through extracting sentiment with Cortex AI Functions, building predictive ML models with Cortex Code, and creating an intelligent conversational agent accessible through Snowflake Intelligence.
+
+## Build with Cortex Code
+
+**Cortex Code** is an AI-driven intelligent agent integrated into the Snowflake platform, optimized for complex data engineering, analytics, machine learning, and agent-building tasks. It uses an autonomous agent framework to interact directly with your Snowflake environment, with deep understanding of Snowflake's Role-Based Access Control (RBAC), schemas, and best practices.
+
+**Available in two interfaces:**
+- **Snowsight** - Click the Cortex Code icon (bottom-right corner) in Notebooks or Workspaces. Generate code from natural language, explain and optimize existing queries, review AI-suggested changes with diff views before applying.
+- **CLI** - For power users and developers, the Cortex Code CLI provides an agentic shell that bridges your local development environment (VS Code, Cursor) and your Snowflake account. It can read/write local files, execute SQL, run bash commands, and manage dbt projects or Streamlit apps.
+
+**What makes this guide unique:** Rather than just running pre-built notebooks, you can use Cortex Code to build the entire ML pipeline through conversation—from feature engineering to model training, backtesting, and registration in the Snowflake ML Registry.
 
 ## Key Features
 
 **AI-Powered Sentiment Extraction**: Use Cortex AI Functions's `AI_COMPLETE()` function with Claude (`claude-4-sonnet`) to analyze earnings call transcripts and extract structured sentiment scores (1-10 scale), analyst participation counts, and human-readable reasoning—all from unstructured text.
 
-**Momentum-Based ML Predictions**: Train LightGBM models on technical momentum features (r_1, r_5_1, r_10_5, r_21_10, r_63_21) using walk-forward quarterly validation, then register them in Snowflake's ML Model Registry for production inference.
+**Momentum-Based ML Predictions**: Train LightGBM models on technical momentum features using walk-forward quarterly validation, then register them in Snowflake's ML Model Registry for production inference.
 
 **Semantic Search Over Sentiment**: Create Cortex Search services that enable natural language queries like "find companies with margin concerns" or "show bullish analyst sentiment"—without managing embeddings or vector databases.
 
@@ -40,11 +52,17 @@ This guide leverages Snowflake's native AI features to create a seamless, end-to
 
 **Cortex Search Services**: Sentiment reasons are indexed into Cortex Search, enabling semantic retrieval across all analyzed transcripts. Analysts can find relevant insights using natural language queries.
 
-**Cortex Analyst Semantic Views**: A semantic view defines the relationships and metrics within sentiment data, making it easy for the AI to understand and respond to analytical questions about sentiment trends and distributions.
+**Cortex Analyst**: A semantic view defines the relationships and metrics within sentiment data, making it easy for the AI to understand and respond to analytical questions about sentiment trends and distributions.
 
 **Cortex Agents**: A single agent is created with role-specific instructions that orchestrate multiple tools—ML predictions, text-to-SQL queries, semantic search, and email notifications—based on user intent.
 
 **Snowflake Intelligence**: The conversational interface where users interact with the Cortex Agent. Users can ask complex multi-step questions, and the agent coordinates the appropriate tools to provide comprehensive answers.
+
+## Architecture
+
+![Research Pipeline Architecture](assets/architecture-diagram.png)
+
+The architecture shows how Cortex Code serves as the central AI coding assistant throughout the pipeline—from data ingestion using **Snowflake Public Data (Free)** from Snowflake Marketplace, to sentiment extraction with Cortex AI Functions, ML model training and registry, and finally the unified agent experience in Snowflake Intelligence.
 
 ## Business Impact
 
@@ -92,16 +110,9 @@ Ready to transform your quantitative research workflow? This guide includes ever
 
 **[GitHub Repository →](https://github.com/Snowflake-Labs/sfguide-quantitative-research-aisql-cortex)**
 
-The repository contains:
-- Complete setup scripts for database, warehouse, and role configuration
-- Notebooks for sentiment extraction and ML model training
-- SQL scripts for Cortex Search, Semantic Views, and Agent creation
-- Step-by-step instructions for configuring Snowflake Intelligence
-- Teardown scripts for cleanup
-
-
 ## Related Resources
 
+- [Cortex Code Documentation](https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code)
 - [Cortex AI Functions Documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql)
 - [Cortex Search Overview](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview)
 - [Cortex Analyst Guide](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
