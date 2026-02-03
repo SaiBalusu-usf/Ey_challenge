@@ -4,27 +4,32 @@ summary: Build an AI-powered quantitative research pipeline using Cortex Code, C
 categories: snowflake-site:taxonomy/industry/financial-services, snowflake-site:taxonomy/product/ai, snowflake-site:taxonomy/product/analytics, snowflake-site:taxonomy/snowflake-feature/ingestion/conversational-assistants, snowflake-site:taxonomy/snowflake-feature/cortex-llm-functions, snowflake-site:taxonomy/snowflake-feature/cortex-analyst, snowflake-site:taxonomy/snowflake-feature/cortex-search, snowflake-site:taxonomy/snowflake-feature/snowflake-intelligence, snowflake-site:taxonomy/snowflake-feature/marketplace-and-integrations, snowflake-site:taxonomy/snowflake-feature/snowpark, snowflake-site:taxonomy/snowflake-feature/cortex-code
 environments: web
 status: Hidden
-authors: Harry Yu, Serena Zou, Dureti Shemsi
+authors: Harry Yu, Serena Zou, Constantin Stanca, Dureti Shemsi
 feedback link: https://github.com/Snowflake-Labs/sfguides/issues
 fork repo link: https://github.com/Snowflake-Labs/sfguide-quantitative-research-aisql-cortex
 
 # Quantitative Research with AI Functions and Cortex Code using Snowflake Public Data
 
-## Overview
+## Overview: Driving Alpha and Efficiency with Native AI
 
 This guide demonstrates how to build an end-to-end AI-powered quantitative research pipeline using Snowflake's native AI capabilities—with **Cortex Code** as your AI coding assistant throughout the journey.
 
 Financial analysts spend countless hours manually reviewing earnings call transcripts to gauge market sentiment and identify investment opportunities. This guide automates and scales that process while showing you how to use **Cortex Code** to build, understand, and extend the solution through natural language conversation.
 
-Using publicly available earnings call data from Dow Jones 30 companies (via Snowflake Marketplace), this guide walks you through extracting sentiment with Cortex AI Functions, building predictive ML models with Cortex Code, and creating an intelligent conversational agent accessible through Snowflake Intelligence.
+By leveraging Snowflake, you are building your AI solutions directly where your data resides—pushing application compute to the data, not data to the application. This eliminates the security risks, governance headaches, and latency associated with moving sensitive financial data to external environments. This entire solution is built seamlessly within the Snowflake Data Cloud, ensuring the highest standards of enterprise security, governance (RBAC), and ease of use.
+
+This guide uses publicly available earnings call data from Dow Jones 30 companies (via Snowflake Marketplace) to show you how to:
+- Extract consistent sentiment at scale with Cortex AI Functions.
+- Build and deploy predictive Machine Learning (ML) models in minutes with the conversational power of Cortex Code.
+- Create an intelligent, unified conversational agent accessible through Snowflake Intelligence.
 
 ## Build with Cortex Code
 
 **Cortex Code** is an AI-driven intelligent agent integrated into the Snowflake platform, optimized for complex data engineering, analytics, machine learning, and agent-building tasks. It uses an autonomous agent framework to interact directly with your Snowflake environment, with deep understanding of Snowflake's Role-Based Access Control (RBAC), schemas, and best practices.
 
-**Available in two interfaces:**
-- **Snowsight** - Click the Cortex Code icon (bottom-right corner) in Notebooks or Workspaces. Generate code from natural language, explain and optimize existing queries, review AI-suggested changes with diff views before applying.
-- **CLI** - For power users and developers, the Cortex Code CLI provides an agentic shell that bridges your local development environment (VS Code, Cursor) and your Snowflake account. It can read/write local files, execute SQL, run bash commands, and manage dbt projects or Streamlit apps.
+**Available in two interfaces, enabling different personas:**
+- **Snowsight (Analyst/Data Scientist)** - Click the Cortex Code icon in Notebooks or Workspaces. Cortex Code allows subject matter experts (Quants, Analysts) to rapidly generate complex code from natural language, explain existing queries, and review AI-suggested changes, saving significant time otherwise spent on boilerplate coding.
+- **CLI (Developer/Engineer)** - Provides an agentic shell for power users, bridging the local development environment (VS Code, Cursor) and your Snowflake account. It can read/write local files, execute SQL, run bash commands, and manage dbt projects or Streamlit apps, accelerating the developer workflow.
 
 **What makes this guide unique:** Rather than just running pre-built notebooks, you can use Cortex Code to build the entire ML pipeline through conversation—from feature engineering to model training, backtesting, and registration in the Snowflake ML Registry.
 
@@ -78,6 +83,15 @@ This guide helps quantitative research teams transition from manual transcript a
 
 **Instant Access**: Any team member can query sentiment data or run predictions through natural language, democratizing access to research insights.
 
+## Beneficiary Key Personas
+
+| Benefiting Party | Value / Saved Cost | Revenue Potential / Risk Mitigation |
+|------------------|-------------------|------------------------------------|
+| **Quantitative Analysts** | Faster Analysis: Extract sentiment from dozens of calls in minutes (vs. days/weeks). Time Saved: Hundreds of man-hours per quarter on transcript analysis. | Increased Alpha Generation: Faster insight-to-trade cycle allows analysts to identify and act on market anomalies sooner, directly increasing potential trading revenue. |
+| **Data Scientists / ML Engineers** | Accelerated Development: Use Cortex Code to build the ML pipeline in conversation, cutting feature engineering and model deployment time by up to 50%. | Reduced Complexity & Governance Risk: By hosting the LLM and the entire pipeline securely within Snowflake, they mitigate the risk of data leakage and reduce the complexity and cost of maintaining multiple security tools. |
+| **Portfolio Managers / Leadership** | Scalable Coverage: Expand coverage from a handful of companies to the entire DOW 30+ without adding headcount (a massive saving on labor costs). | Consistent Methodology: Applied, uniform sentiment scoring leads to more reliable model performance, reducing model risk and increasing confidence in investment decisions. |
+| **Enterprise IT/Security** | Simplified Architecture: Eliminates the need to move data out of Snowflake, drastically simplifying data governance, auditing, and security protocols. | Security Assurance: Guarantees that sensitive data never leaves the governed Data Cloud, ensuring compliance with global data residency and security standards. |
+
 ## Use Cases and Applications
 
 This guide serves as a blueprint for AI-powered quantitative research:
@@ -112,10 +126,19 @@ Ready to transform your quantitative research workflow? This guide includes ever
 
 ## Related Resources
 
+### Related Guides
+- [Agentic AI for Asset Management](https://www.snowflake.com/en/developers/guides/agentic-ai-for-asset-management/)
+- [Financial Advisor for Wealth Management](https://www.snowflake.com/en/developers/guides/financial-advisor-for-wealth-management/)
+- [Investment Portfolio Analytics with Snowflake Cortex](https://www.snowflake.com/en/developers/guides/investment-portfolio-analytics-with-snowflake-cortex/)
+
+### Cortex Code
+- [Snowflake Unveils Cortex Code](https://www.snowflake.com/en/news/press-releases/snowflake-unveils-cortex-code-an-ai-coding-agent-that-drastically-increases-productivity-by-understanding-your-enterprise-data-context/)
 - [Cortex Code Documentation](https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code)
+
+### Documentation
 - [Cortex AI Functions Documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql)
 - [Cortex Search Overview](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview)
-- [Cortex Analyst Guide](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
+- [Cortex Analyst Overview](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
 - [Snowflake Intelligence Overview](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence)
 - [Snowflake ML Model Registry](https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/overview)
 
