@@ -1,0 +1,71 @@
+flowchart TB
+    subgraph sources["DATA SOURCES"]
+        direction TB
+        S1["5G Core Network<br/>AMF Events"]
+        S2["4G/LTE RAN<br/>Performance Metrics"]
+        S3["Cell Site<br/>Infrastructure"]
+        S4["IP Transport<br/>Network Stats"]
+        S5["Customer<br/>Subscribers"]
+    end
+
+    subgraph ingestion["DATA INGESTION"]
+        direction TB
+        I1["Snowpipe<br/>Streaming"]
+        I2["Batch Load<br/>CSV/Parquet"]
+    end
+
+    subgraph storage["SNOWFLAKE STORAGE"]
+        direction TB
+        ST1[("RAW Layer<br/>Landing Tables")]
+        ST2[("STAGING Layer<br/>Cleansed Data")]
+    end
+
+    subgraph transform["DATA TRANSFORMATION"]
+        direction TB
+        T1["Dynamic Tables<br/>Incremental Processing"]
+        T2["dbt Models<br/>Business Logic"]
+    end
+
+    subgraph analytics["ANALYTICS LAYER"]
+        direction TB
+        A1["FACT Tables<br/>Network Events<br/>Call Records<br/>Alarms"]
+        A2["DIM Tables<br/>Cell Sites<br/>Subscribers<br/>Time"]
+        A3["Aggregated Metrics<br/>KPIs & SLAs"]
+    end
+
+    subgraph semantic["SEMANTIC LAYER"]
+        direction TB
+        SEM1["Semantic Views<br/>Business Definitions"]
+        SEM2["Metrics & Measures<br/>Standardized KPIs"]
+    end
+
+    subgraph ai["SNOWFLAKE CORTEX"]
+        direction TB
+        AI1["Cortex Analyst<br/>Natural Language<br/>to SQL"]
+        AI2["Cortex Agent<br/>Multi-turn<br/>Conversations"]
+        AI3["LLM Functions<br/>COMPLETE<br/>SUMMARIZE"]
+    end
+
+    subgraph apps["APPLICATIONS"]
+        direction TB
+        APP1["Streamlit<br/>Network Operations<br/>Dashboard"]
+        APP2["Snowflake<br/>Intelligence<br/>Agent"]
+        APP3["External BI<br/>Tableau/PowerBI"]
+    end
+
+    sources --> ingestion
+    ingestion --> storage
+    storage --> transform
+    transform --> analytics
+    analytics --> semantic
+    semantic --> ai
+    ai --> apps
+
+    style sources fill:#F5F5F5,stroke:#757575,stroke-width:2px
+    style ingestion fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    style storage fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
+    style transform fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px
+    style analytics fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px
+    style semantic fill:#FCE4EC,stroke:#E91E63,stroke-width:2px
+    style ai fill:#FFF8E1,stroke:#FFC107,stroke-width:2px
+    style apps fill:#E0F7FA,stroke:#00BCD4,stroke-width:2px
