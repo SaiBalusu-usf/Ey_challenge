@@ -146,7 +146,7 @@ The script creates a `LOAD_STREAMLIT_FROM_GITHUB()` procedure that:
 ## Explore the Dashboards
 
 <details>
-<summary><strong>Network Engineer View</strong></summary>
+<summary><h3>Network Engineer View</h3></summary>
 
 The Network Engineer dashboard focuses on real-time troubleshooting:
 
@@ -161,7 +161,7 @@ The Network Engineer dashboard focuses on real-time troubleshooting:
 </details>
 
 <details>
-<summary><strong>Network Performance View</strong></summary>
+<summary><h3>Network Performance View</h3></summary>
 
 The Network Performance dashboard focuses on capacity planning:
 
@@ -176,7 +176,7 @@ The Network Performance dashboard focuses on capacity planning:
 </details>
 
 <details>
-<summary><strong>Network Manager View</strong></summary>
+<summary><h3>Network Manager View</h3></summary>
 
 The Network Manager dashboard focuses on SLA management:
 
@@ -191,7 +191,7 @@ The Network Manager dashboard focuses on SLA management:
 </details>
 
 <details>
-<summary><strong>Executive View</strong></summary>
+<summary><h3>Executive View</h3></summary>
 
 The Executive dashboard focuses on business impact:
 
@@ -226,7 +226,7 @@ The setup script automatically creates the Semantic View and Snowflake Intellige
 Navigate to Snowflake Intelligence in Snowsight and try these persona-specific queries:
 
 <details>
-<summary><strong>Network Engineer (NOC/Field)</strong></summary>
+<summary><h3>Network Engineer (NOC/Field)</h3></summary>
 
 **1. RRC Success Rate Troubleshooting**
 
@@ -269,7 +269,7 @@ Track cells with handover failures impacting mobile subscribers. Poor handover s
 </details>
 
 <details>
-<summary><strong>Network Performance</strong></summary>
+<summary><h3>Network Performance</h3></summary>
 
 **1. Technology Comparison**
 
@@ -312,7 +312,7 @@ Identify regions with the highest congestion risk based on utilization patterns.
 </details>
 
 <details>
-<summary><strong>Network Manager (Operations)</strong></summary>
+<summary><h3>Network Manager (Operations)</h3></summary>
 
 **1. SLA Compliance Overview**
 
@@ -355,7 +355,7 @@ Compare Norte vs Sul performance for resource allocation decisions. Regional ben
 </details>
 
 <details>
-<summary><strong>Executive (C-Level)</strong></summary>
+<summary><h3>Executive (C-Level)</h3></summary>
 
 **1. Network Health Overview**
 
