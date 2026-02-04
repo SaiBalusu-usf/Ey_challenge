@@ -138,18 +138,19 @@ The script creates a `LOAD_STREAMLIT_FROM_GITHUB()` procedure that:
 2. Find `NETWORK_OPS_DASHBOARD` in the list
 3. Click to open the application
 
-<button>[Launch Streamlit Dashboard](https://app.snowflake.com/_deeplink/#/streamlit-apps/NETWORK_OPERATIONS.ANALYTICS.NETWORK_OPS_DASHBOARD)</button>
+<a href="https://app.snowflake.com/_deeplink/#/streamlit-apps/NETWORK_OPERATIONS.ANALYTICS.NETWORK_OPS_DASHBOARD" target="_blank">Launch Streamlit Dashboard</a>
 
-![Streamlit Dashboard](assets/streamlit_dashboard.png)
+![Streamlit Dashboard](assets/img/streamlit_dashboard.png)
 
 <!-- ------------------------ -->
 ## Explore the Dashboards
 
-### Network Engineer View
+<details>
+<summary><strong>Network Engineer View</strong></summary>
 
 The Network Engineer dashboard focuses on real-time troubleshooting:
 
-![Network Engineer Dashboard](assets/dashboard_network_engineer.png)
+![Network Engineer Dashboard](assets/img/dashboard_network_engineer.png)
 
 **Key Features:**
 - **Active Alarms**: Real-time alarm monitoring with severity levels
@@ -157,11 +158,14 @@ The Network Engineer dashboard focuses on real-time troubleshooting:
 - **Cell Site Map**: 3D visualization of network topology
 - **Drill-down Analysis**: Click any site for detailed metrics
 
-### Network Performance View
+</details>
+
+<details>
+<summary><strong>Network Performance View</strong></summary>
 
 The Network Performance dashboard focuses on capacity planning:
 
-![Network Performance Dashboard](assets/dashboard_analyst.png)
+![Network Performance Dashboard](assets/img/dashboard_analyst.png)
 
 **Key Features:**
 - **PRB Utilization Trends**: Physical Resource Block usage over time
@@ -169,9 +173,14 @@ The Network Performance dashboard focuses on capacity planning:
 - **Capacity Forecasting**: Predictive capacity trends
 - **Comparative Analysis**: Site-to-site performance comparison
 
-### Network Manager View
+</details>
+
+<details>
+<summary><strong>Network Manager View</strong></summary>
 
 The Network Manager dashboard focuses on SLA management:
+
+![Network Manager Dashboard](assets/img/dashboard_manager.png)
 
 **Key Features:**
 - **SLA Compliance**: Real-time SLA tracking
@@ -179,15 +188,22 @@ The Network Manager dashboard focuses on SLA management:
 - **Coverage Analysis**: Network coverage gaps
 - **Executive Summary**: High-level operational status
 
-### Executive View
+</details>
+
+<details>
+<summary><strong>Executive View</strong></summary>
 
 The Executive dashboard focuses on business impact:
+
+![Executive Dashboard](assets/img/dashboard_executive.png)
 
 **Key Features:**
 - **Revenue at Risk**: Financial impact of network issues
 - **Churn Indicators**: Customer experience metrics
 - **Strategic KPIs**: High-level performance indicators
 - **Trend Analysis**: Month-over-month comparisons
+
+</details>
 
 <!-- ------------------------ -->
 ## Create Semantic View
@@ -392,9 +408,9 @@ Understand what percentage of the network meets SLA targets. This key metric ind
 
 </details>
 
-<button>[Launch Network Operations Agent](https://app.snowflake.com/_deeplink/#/agents/database/NETWORK_OPERATIONS/schema/ANALYTICS/agent/NETWORK_OPERATIONS_AGENT/details)</button>
+<a href="https://app.snowflake.com/_deeplink/#/agents/database/NETWORK_OPERATIONS/schema/ANALYTICS/agent/NETWORK_OPERATIONS_AGENT/details" target="_blank">Launch Network Operations Agent</a>
 
-![Snowflake Intelligence](assets/snowflake_intelligence.png)
+
 
 <!-- ------------------------ -->
 ## Cleanup
