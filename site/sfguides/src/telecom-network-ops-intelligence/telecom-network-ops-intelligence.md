@@ -37,7 +37,7 @@ In this Guide, you will build a complete network operations platform that:
 
 ### Prerequisites
 - A Snowflake account with ACCOUNTADMIN privileges
-- Go to the [Snowflake](https://signup.snowflake.com/?utm_source=snowflake-devrel&utm_medium=developer-guides&utm_cta=developer-guides) sign-up page and register for a free account
+- Go to the <a href="https://signup.snowflake.com/?utm_source=snowflake-devrel&utm_medium=developer-guides&utm_cta=developer-guides" target="_blank">Snowflake</a> sign-up page and register for a free account
 - Basic familiarity with SQL and Python
 
 <!-- ------------------------ -->
@@ -83,44 +83,31 @@ In this step, you'll create all the Snowflake objects needed for the Network Ope
 
 ### Step 1: Create Database Objects
 
-1. In Snowsight, click `Projects`, then `Workspaces` in the left navigation, or [click here](https://app.snowflake.com/_deeplink/#/workspaces?utm_source=quickstart&utm_medium=quickstart&utm_campaign=-us-en-all&utm_content=app-network-operations-reporting-analytics-snowflake-intelligence) to go there directly
+1. In Snowsight, click `Projects`, then `Workspaces` in the left navigation, or <a href="https://app.snowflake.com/_deeplink/#/workspaces?utm_source=quickstart&utm_medium=quickstart&utm_campaign=-us-en-all&utm_content=app-network-operations-reporting-analytics-snowflake-intelligence" target="_blank">click here</a> to go there directly
 2. Click `+ Add new` to create a new Workspace
 3. Click `SQL File` to create a new SQL file
-4. Copy the setup script from [setup.sql](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/setup.sql) and paste it into your SQL file
+4. Copy the setup script from <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/setup.sql" target="_blank">setup.sql</a> and paste it into your SQL file
 
 ### Step 2: Run Infrastructure Setup
 
 Run the setup script to create:
-- **Database**: `NETWORK_OPERATIONS` with 7 schemas
+- **Database**: `NETWORK_OPERATIONS` with 7 schemas (RAN_4G, RAN_5G, CORE_4G, CORE_5G, TRANSPORT, ANALYTICS, STAGING)
 - **Warehouses**: `NETWORK_OPS_WH` for queries, `NETWORK_OPS_BUILD_WH` for data loading
 - **Stages**: `CSV_DATA` for data files, `STREAMLIT_STAGE` for app deployment
 - **Tables**: Dimension and fact tables for network data
-
-```sql
--- Example: Creating the database structure
-CREATE DATABASE IF NOT EXISTS NETWORK_OPERATIONS;
-
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.RAN_4G;
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.RAN_5G;
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.CORE_4G;
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.CORE_5G;
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.TRANSPORT;
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.ANALYTICS;
-CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.STAGING;
-```
 
 ### Step 3: Download Data Files
 
 Download the CSV data files from the GitHub repository:
 
-- [DIM_CELL_SITE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_CELL_SITE.csv) (450 sites)
-- [DIM_NETWORK_ELEMENT.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_NETWORK_ELEMENT.csv) (480 elements)
-- [ENODEB_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/ENODEB_PERFORMANCE.csv) (426K records)
-- [GNODEB_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/GNODEB_PERFORMANCE.csv) (178K records)
-- [FACT_RAN_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_RAN_PERFORMANCE.csv) (604K records)
-- [FACT_CORE_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_CORE_PERFORMANCE.csv) (13K records)
-- [TRANSPORT_DEVICE_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/TRANSPORT_DEVICE_PERFORMANCE.csv) (604K records)
-- Core element files: [MME_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/MME_4G.csv), [SGW_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SGW_4G.csv), [PGW_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/PGW_4G.csv), [AMF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/AMF_5G.csv), [SMF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SMF_5G.csv), [UPF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/UPF_5G.csv)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_CELL_SITE.csv" target="_blank">DIM_CELL_SITE.csv</a> (450 sites)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_NETWORK_ELEMENT.csv" target="_blank">DIM_NETWORK_ELEMENT.csv</a> (480 elements)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/ENODEB_PERFORMANCE.csv" target="_blank">ENODEB_PERFORMANCE.csv</a> (426K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/GNODEB_PERFORMANCE.csv" target="_blank">GNODEB_PERFORMANCE.csv</a> (178K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_RAN_PERFORMANCE.csv" target="_blank">FACT_RAN_PERFORMANCE.csv</a> (604K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_CORE_PERFORMANCE.csv" target="_blank">FACT_CORE_PERFORMANCE.csv</a> (13K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/TRANSPORT_DEVICE_PERFORMANCE.csv" target="_blank">TRANSPORT_DEVICE_PERFORMANCE.csv</a> (604K records)
+- Core element files: <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/MME_4G.csv" target="_blank">MME_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SGW_4G.csv" target="_blank">SGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/PGW_4G.csv" target="_blank">PGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/AMF_5G.csv" target="_blank">AMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SMF_5G.csv" target="_blank">SMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/UPF_5G.csv" target="_blank">UPF_5G.csv</a>
 
 ### Step 4: Upload Data to Stage
 
@@ -133,58 +120,19 @@ Download the CSV data files from the GitHub repository:
 <!-- ------------------------ -->
 ## Load Data
 
-### Step 1: Load Dimension Tables
+### Step 1: Load Dimension and Fact Tables
 
-Run the data loading commands from the setup script:
+Continue running the setup script to load data into all tables. The script includes COPY INTO commands for:
+- **Dimension tables**: DIM_CELL_SITE, DIM_NETWORK_ELEMENT
+- **RAN tables**: ENODEB_PERFORMANCE, GNODEB_PERFORMANCE
+- **Core tables**: MME_4G, SGW_4G, PGW_4G, AMF_5G, SMF_5G, UPF_5G
+- **Transport tables**: TRANSPORT_DEVICE_PERFORMANCE
+- **Analytics tables**: FACT_RAN_PERFORMANCE, FACT_CORE_PERFORMANCE
 
-```sql
-USE DATABASE NETWORK_OPERATIONS;
-USE SCHEMA STAGING;
+### Step 2: Verify Data Load
 
--- Load Cell Site Dimension
-COPY INTO ANALYTICS.DIM_CELL_SITE
-FROM @CSV_DATA/DIM_CELL_SITE.csv
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"');
+After running the data loading section, verify the record counts:
 
--- Load Network Element Dimension
-COPY INTO ANALYTICS.DIM_NETWORK_ELEMENT
-FROM @CSV_DATA/DIM_NETWORK_ELEMENT.csv
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"');
-```
-
-### Step 2: Load Fact Tables
-
-```sql
--- Load RAN Performance Facts
-COPY INTO ANALYTICS.FACT_RAN_PERFORMANCE
-FROM @CSV_DATA/FACT_RAN_PERFORMANCE.csv
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"');
-
--- Load Core Performance Facts
-COPY INTO ANALYTICS.FACT_CORE_PERFORMANCE
-FROM @CSV_DATA/FACT_CORE_PERFORMANCE.csv
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"');
-
--- Load Transport Performance
-COPY INTO TRANSPORT.TRANSPORT_DEVICE_PERFORMANCE
-FROM @CSV_DATA/TRANSPORT_DEVICE_PERFORMANCE.csv
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"');
-```
-
-### Step 3: Verify Data Load
-
-```sql
--- Check record counts
-SELECT 'DIM_CELL_SITE' AS TABLE_NAME, COUNT(*) AS RECORD_COUNT FROM ANALYTICS.DIM_CELL_SITE
-UNION ALL
-SELECT 'DIM_NETWORK_ELEMENT', COUNT(*) FROM ANALYTICS.DIM_NETWORK_ELEMENT
-UNION ALL
-SELECT 'FACT_RAN_PERFORMANCE', COUNT(*) FROM ANALYTICS.FACT_RAN_PERFORMANCE
-UNION ALL
-SELECT 'FACT_CORE_PERFORMANCE', COUNT(*) FROM ANALYTICS.FACT_CORE_PERFORMANCE;
-```
-
-Expected output:
 | TABLE_NAME | RECORD_COUNT |
 |------------|--------------|
 | DIM_CELL_SITE | 450 |
@@ -198,8 +146,8 @@ Expected output:
 ### Step 1: Download Streamlit Files
 
 Download the Streamlit application files from GitHub:
-- [streamlit_app.py](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit_app.py)
-- [environment.yml](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/environment.yml)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit_app.py" target="_blank">streamlit_app.py</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/environment.yml" target="_blank">environment.yml</a>
 
 ### Step 2: Upload to Stage
 
@@ -209,15 +157,7 @@ Download the Streamlit application files from GitHub:
 
 ### Step 3: Create Streamlit App
 
-Run the following SQL to create the Streamlit application:
-
-```sql
-CREATE OR REPLACE STREAMLIT NETWORK_OPERATIONS.ANALYTICS.NETWORK_OPS_DASHBOARD
-  ROOT_LOCATION = '@NETWORK_OPERATIONS.STAGING.STREAMLIT_STAGE'
-  MAIN_FILE = 'streamlit_app.py'
-  QUERY_WAREHOUSE = 'NETWORK_OPS_WH'
-  COMMENT = '{"origin":"sf_sit-is", "name":"network_operations", "version":{"major":1, "minor":0}}';
-```
+Run the Streamlit creation section from the setup script. This creates the `NETWORK_OPS_DASHBOARD` application.
 
 ### Step 4: Launch the Dashboard
 
@@ -281,125 +221,25 @@ A Semantic View enables natural language queries against your network data.
 
 ### Step 1: Create the Semantic View
 
-Run the semantic view creation script:
-
-```sql
-CREATE OR REPLACE SEMANTIC VIEW NETWORK_OPERATIONS.ANALYTICS.NETWORK_SEMANTIC_VIEW
-  COMMENT = 'Semantic view for telecom network operations analytics'
-  AS $$
-schema:
-  tables:
-    - name: DIM_CELL_SITE
-      base_table:
-        database: NETWORK_OPERATIONS
-        schema: ANALYTICS
-        table: DIM_CELL_SITE
-      description: Cell site dimension with location and configuration data
-      columns:
-        - name: CELL_ID
-          description: Unique identifier for the cell site
-          data_type: VARCHAR
-        - name: SITE_NAME
-          description: Human-readable name of the cell site
-          data_type: VARCHAR
-        - name: REGION
-          description: Geographic region (Lisboa, Porto, Braga, Coimbra, Faro)
-          data_type: VARCHAR
-        - name: NETWORK_TYPE
-          description: Network technology (4G LTE or 5G NR)
-          data_type: VARCHAR
-        - name: LOCATION_LAT
-          description: Latitude coordinate
-          data_type: FLOAT
-        - name: LOCATION_LON
-          description: Longitude coordinate
-          data_type: FLOAT
-          
-    - name: FACT_RAN_PERFORMANCE
-      base_table:
-        database: NETWORK_OPERATIONS
-        schema: ANALYTICS
-        table: FACT_RAN_PERFORMANCE
-      description: RAN performance metrics including success rates and throughput
-      columns:
-        - name: TIMESTAMP
-          description: Measurement timestamp
-          data_type: TIMESTAMP_NTZ
-        - name: CELL_ID
-          description: Cell site identifier (foreign key to DIM_CELL_SITE)
-          data_type: VARCHAR
-        - name: RRC_SUCCESS_RATE
-          description: RRC Connection Success Rate percentage
-          data_type: FLOAT
-        - name: ERAB_SUCCESS_RATE
-          description: E-RAB Setup Success Rate percentage
-          data_type: FLOAT
-        - name: DL_THROUGHPUT_MBPS
-          description: Downlink throughput in Mbps
-          data_type: FLOAT
-        - name: UL_THROUGHPUT_MBPS
-          description: Uplink throughput in Mbps
-          data_type: FLOAT
-        - name: PRB_UTILIZATION
-          description: Physical Resource Block utilization percentage
-          data_type: FLOAT
-
-  relationships:
-    - name: cell_performance
-      left_table: FACT_RAN_PERFORMANCE
-      right_table: DIM_CELL_SITE
-      join_type: left
-      relationship_columns:
-        - left_column: CELL_ID
-          right_column: CELL_ID
-
-  verified_queries:
-    - name: Top 10 Cells by Throughput
-      question: What are the top 10 cell sites by average downlink throughput?
-      sql: |
-        SELECT d.SITE_NAME, d.REGION, AVG(f.DL_THROUGHPUT_MBPS) as AVG_THROUGHPUT
-        FROM NETWORK_OPERATIONS.ANALYTICS.FACT_RAN_PERFORMANCE f
-        JOIN NETWORK_OPERATIONS.ANALYTICS.DIM_CELL_SITE d ON f.CELL_ID = d.CELL_ID
-        GROUP BY d.SITE_NAME, d.REGION
-        ORDER BY AVG_THROUGHPUT DESC
-        LIMIT 10
-        
-    - name: Regional Performance Summary
-      question: Show me the average RRC success rate by region
-      sql: |
-        SELECT d.REGION, AVG(f.RRC_SUCCESS_RATE) as AVG_SUCCESS_RATE
-        FROM NETWORK_OPERATIONS.ANALYTICS.FACT_RAN_PERFORMANCE f
-        JOIN NETWORK_OPERATIONS.ANALYTICS.DIM_CELL_SITE d ON f.CELL_ID = d.CELL_ID
-        GROUP BY d.REGION
-        ORDER BY AVG_SUCCESS_RATE DESC
-$$;
-```
+Run the semantic view creation section from the setup script. This creates `NETWORK_SEMANTIC_VIEW` with:
+- Table definitions for DIM_CELL_SITE and FACT_RAN_PERFORMANCE
+- Column descriptions for natural language understanding
+- Relationships between dimension and fact tables
+- Verified queries for common analysis patterns
 
 ### Step 2: Verify the Semantic View
 
-```sql
--- Test the semantic view
-DESCRIBE SEMANTIC VIEW NETWORK_OPERATIONS.ANALYTICS.NETWORK_SEMANTIC_VIEW;
-```
+The setup script includes a DESCRIBE command to verify the semantic view was created successfully.
 
 <!-- ------------------------ -->
 ## Configure Snowflake Intelligence Agent
 
 ### Step 1: Create the Agent
 
-Run the agent creation script:
-
-```sql
-CREATE OR REPLACE AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.NETWORK_OPERATIONS_AGENT
-  COMMENT = 'Network Operations Intelligence Agent for natural language queries'
-  MODEL = 'claude-3-5-sonnet'
-  SYSTEM_PROMPT = 'You are a telecom network operations expert assistant. Help users analyze network performance data, identify issues, and provide recommendations. Always provide context about the metrics and their business impact.'
-  TOOLS = (
-    SEMANTIC_VIEW_TOOL(
-      SEMANTIC_VIEW => 'NETWORK_OPERATIONS.ANALYTICS.NETWORK_SEMANTIC_VIEW'
-    )
-  );
-```
+Run the agent creation section from the setup script. This creates the `NETWORK_OPERATIONS_AGENT` with:
+- Claude 3.5 Sonnet model for natural language understanding
+- System prompt configured for telecom domain expertise
+- Semantic View tool for data access
 
 ### Step 2: Test the Agent
 
@@ -412,9 +252,8 @@ Navigate to Snowflake Intelligence in Snowsight and try these persona-specific q
 
 Identify cells falling below the 95% RRC success rate target. This is the first indicator of connection issues that affect subscriber experience and requires immediate attention from field teams.
 
-```
-Which cells have RRC success below 95% right now?
-```
+> Which cells have RRC success below 95% right now?
+
 **What It Shows:** Real-time fault detection for proactive troubleshooting before customer complaints
 
 ---
@@ -423,9 +262,8 @@ Which cells have RRC success below 95% right now?
 
 Find sites with PRB utilization above 85% (critical threshold). These sites are at risk of congestion and degraded service quality during peak hours.
 
-```
-Show me the top 10 sites with critical PRB utilization above 85%
-```
+> Show me the top 10 sites with critical PRB utilization above 85%
+
 **What It Shows:** Capacity hotspots requiring immediate attention or traffic offloading
 
 ---
@@ -434,9 +272,8 @@ Show me the top 10 sites with critical PRB utilization above 85%
 
 Identify 5G cells with PDU session establishment problems. Low PDU success rates indicate issues with 5G core connectivity affecting new-generation services.
 
-```
-Which 5G cells in Lisboa have PDU session issues?
-```
+> Which 5G cells in Lisboa have PDU session issues?
+
 **What It Shows:** 5G-specific troubleshooting for next-gen network quality
 
 ---
@@ -445,9 +282,8 @@ Which 5G cells in Lisboa have PDU session issues?
 
 Track cells with handover failures impacting mobile subscribers. Poor handover success causes dropped calls and interrupted data sessions during movement.
 
-```
-List cells with handover failures in the last 24 hours
-```
+> List cells with handover failures in the last 24 hours
+
 **What It Shows:** Mobility performance analysis for seamless subscriber experience
 
 </details>
@@ -459,9 +295,8 @@ List cells with handover failures in the last 24 hours
 
 Compare average throughput between 4G and 5G across regions. This analysis supports technology migration planning and validates 5G investment ROI.
 
-```
-Compare average throughput between 4G and 5G by region
-```
+> Compare average throughput between 4G and 5G by region
+
 **What It Shows:** Technology benchmarking for strategic planning and 5G business case validation
 
 ---
@@ -470,9 +305,8 @@ Compare average throughput between 4G and 5G by region
 
 Analyze PRB utilization trends to predict capacity needs. Understanding patterns helps optimize network resources before congestion occurs.
 
-```
-What is the PRB utilization trend for Porto this week?
-```
+> What is the PRB utilization trend for Porto this week?
+
 **What It Shows:** Trend analysis for proactive capacity planning
 
 ---
@@ -481,9 +315,8 @@ What is the PRB utilization trend for Porto this week?
 
 Compare upload and download performance by technology. Balanced performance is critical for video conferencing and cloud applications.
 
-```
-Show uplink vs downlink performance by technology
-```
+> Show uplink vs downlink performance by technology
+
 **What It Shows:** Bidirectional performance analysis for QoE optimization
 
 ---
@@ -492,9 +325,8 @@ Show uplink vs downlink performance by technology
 
 Identify regions with the highest congestion risk based on utilization patterns. Early warning enables preventive capacity expansion.
 
-```
-Which regions have the highest congestion risk?
-```
+> Which regions have the highest congestion risk?
+
 **What It Shows:** Risk-based prioritization for network investment decisions
 
 </details>
@@ -506,9 +338,8 @@ Which regions have the highest congestion risk?
 
 Monitor how many sites are currently below SLA targets. This executive metric drives operational focus and resource allocation decisions.
 
-```
-How many sites are currently below SLA targets?
-```
+> How many sites are currently below SLA targets?
+
 **What It Shows:** Operational health scorecard for management reporting
 
 ---
@@ -517,9 +348,8 @@ How many sites are currently below SLA targets?
 
 Review availability metrics by city to inform capacity planning. Geographic insights support data-driven infrastructure investment.
 
-```
-Show availability metrics by city for capacity planning
-```
+> Show availability metrics by city for capacity planning
+
 **What It Shows:** Regional performance data for CAPEX planning and budget allocation
 
 ---
@@ -528,9 +358,8 @@ Show availability metrics by city for capacity planning
 
 Determine which region has the most sites needing attention. This helps prioritize field team deployment and maintenance scheduling.
 
-```
-Which region has the most sites needing attention?
-```
+> Which region has the most sites needing attention?
+
 **What It Shows:** Resource allocation intelligence for operational efficiency
 
 ---
@@ -539,9 +368,8 @@ Which region has the most sites needing attention?
 
 Compare Norte vs Sul performance for resource allocation decisions. Regional benchmarking supports fair and effective team distribution.
 
-```
-Compare Norte vs Sul performance for resource allocation
-```
+> Compare Norte vs Sul performance for resource allocation
+
 **What It Shows:** Cross-regional analysis for balanced operational coverage
 
 </details>
@@ -553,9 +381,8 @@ Compare Norte vs Sul performance for resource allocation
 
 Get a high-level view of overall network health across Portugal. This board-ready metric summarizes infrastructure performance in business terms.
 
-```
-What is our overall network health across Portugal?
-```
+> What is our overall network health across Portugal?
+
 **What It Shows:** Executive dashboard summary for board reporting and investor communications
 
 ---
@@ -564,9 +391,8 @@ What is our overall network health across Portugal?
 
 Compare 5G vs 4G performance to validate technology investment. Demonstrates return on 5G CAPEX through measurable performance improvements.
 
-```
-Show 5G vs 4G performance summary for board reporting
-```
+> Show 5G vs 4G performance summary for board reporting
+
 **What It Shows:** Technology ROI validation for strategic investment justification
 
 ---
@@ -575,9 +401,8 @@ Show 5G vs 4G performance summary for board reporting
 
 Identify which regions should be prioritized for network investment. Data-driven recommendations support CAPEX allocation decisions.
 
-```
-Which regions should be prioritized for investment?
-```
+> Which regions should be prioritized for investment?
+
 **What It Shows:** Strategic investment guidance based on performance gaps and growth potential
 
 ---
@@ -586,9 +411,8 @@ Which regions should be prioritized for investment?
 
 Understand what percentage of the network meets SLA targets. This key metric indicates overall service quality and contractual compliance.
 
-```
-What percentage of our network meets SLA targets?
-```
+> What percentage of our network meets SLA targets?
+
 **What It Shows:** Compliance scorecard for customer commitments and regulatory reporting
 
 </details>
@@ -600,25 +424,12 @@ What percentage of our network meets SLA targets?
 
 To remove all resources created by this guide:
 
-### Step 1: Drop the Agent
+1. Open your **setup.sql** Workspace (the same one you used during setup)
+2. Scroll to the **TEARDOWN SCRIPT** section at the bottom
+3. **Uncomment** the DROP statements
+4. **Run** the teardown commands
 
-```sql
-DROP AGENT IF EXISTS SNOWFLAKE_INTELLIGENCE.AGENTS.NETWORK_OPERATIONS_AGENT;
-```
-
-### Step 2: Drop the Streamlit App
-
-```sql
-DROP STREAMLIT IF EXISTS NETWORK_OPERATIONS.ANALYTICS.NETWORK_OPS_DASHBOARD;
-```
-
-### Step 3: Drop Database and Warehouses
-
-```sql
-DROP DATABASE IF EXISTS NETWORK_OPERATIONS;
-DROP WAREHOUSE IF EXISTS NETWORK_OPS_WH;
-DROP WAREHOUSE IF EXISTS NETWORK_OPS_BUILD_WH;
-```
+The teardown script will remove the agent, Streamlit app, database, warehouses, and all other objects created by this guide.
 
 <!-- ------------------------ -->
 ## Conclusion and Resources
@@ -644,10 +455,10 @@ Congratulations! You have successfully built a comprehensive telecom network ope
 ### Related Resources
 
 **Snowflake Documentation:**
-- [Streamlit in Snowflake](https://docs.snowflake.com/en/developer-guide/streamlit/about-streamlit)
-- [Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic)
-- [Snowflake Intelligence](https://docs.snowflake.com/en/user-guide/snowflake-intelligence/overview)
+- <a href="https://docs.snowflake.com/en/developer-guide/streamlit/about-streamlit" target="_blank">Streamlit in Snowflake</a>
+- <a href="https://docs.snowflake.com/en/user-guide/views-semantic" target="_blank">Semantic Views</a>
+- <a href="https://docs.snowflake.com/en/user-guide/snowflake-intelligence/overview" target="_blank">Snowflake Intelligence</a>
 
 **Industry Resources:**
-- [3GPP Network Standards](https://www.3gpp.org/)
-- [TM Forum Operations Frameworks](https://www.tmforum.org/)
+- <a href="https://www.3gpp.org/" target="_blank">3GPP Network Standards</a>
+- <a href="https://www.tmforum.org/" target="_blank">TM Forum Operations Frameworks</a>
