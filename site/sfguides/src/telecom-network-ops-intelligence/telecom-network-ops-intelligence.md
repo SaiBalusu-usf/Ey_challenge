@@ -100,14 +100,14 @@ Run the setup script to create:
 
 Download the CSV data files from the GitHub repository:
 
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_CELL_SITE.csv" target="_blank">DIM_CELL_SITE.csv</a> (450 sites)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_NETWORK_ELEMENT.csv" target="_blank">DIM_NETWORK_ELEMENT.csv</a> (480 elements)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/ENODEB_PERFORMANCE.csv" target="_blank">ENODEB_PERFORMANCE.csv</a> (426K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/GNODEB_PERFORMANCE.csv" target="_blank">GNODEB_PERFORMANCE.csv</a> (178K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_RAN_PERFORMANCE.csv" target="_blank">FACT_RAN_PERFORMANCE.csv</a> (604K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_CORE_PERFORMANCE.csv" target="_blank">FACT_CORE_PERFORMANCE.csv</a> (13K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/TRANSPORT_DEVICE_PERFORMANCE.csv" target="_blank">TRANSPORT_DEVICE_PERFORMANCE.csv</a> (604K records)
-- Core element files: <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/MME_4G.csv" target="_blank">MME_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SGW_4G.csv" target="_blank">SGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/PGW_4G.csv" target="_blank">PGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/AMF_5G.csv" target="_blank">AMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SMF_5G.csv" target="_blank">SMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/UPF_5G.csv" target="_blank">UPF_5G.csv</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/DIM_CELL_SITE.csv" target="_blank">DIM_CELL_SITE.csv</a> (450 sites)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/DIM_NETWORK_ELEMENT.csv" target="_blank">DIM_NETWORK_ELEMENT.csv</a> (480 elements)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/ENODEB_PERFORMANCE.csv" target="_blank">ENODEB_PERFORMANCE.csv</a> (426K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/GNODEB_PERFORMANCE.csv" target="_blank">GNODEB_PERFORMANCE.csv</a> (178K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/FACT_RAN_PERFORMANCE.csv" target="_blank">FACT_RAN_PERFORMANCE.csv</a> (604K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/FACT_CORE_PERFORMANCE.csv" target="_blank">FACT_CORE_PERFORMANCE.csv</a> (13K records)
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/TRANSPORT_DEVICE_PERFORMANCE.csv" target="_blank">TRANSPORT_DEVICE_PERFORMANCE.csv</a> (604K records)
+- Core element files: <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/MME_4G.csv" target="_blank">MME_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/SGW_4G.csv" target="_blank">SGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/PGW_4G.csv" target="_blank">PGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/AMF_5G.csv" target="_blank">AMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/SMF_5G.csv" target="_blank">SMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/UPF_5G.csv" target="_blank">UPF_5G.csv</a>
 
 ### Step 4: Upload Data to Stage
 
@@ -146,8 +146,8 @@ After running the data loading section, verify the record counts:
 ### Step 1: Download Streamlit Files
 
 Download the Streamlit application files from GitHub:
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit_app.py" target="_blank">streamlit_app.py</a>
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/environment.yml" target="_blank">environment.yml</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit/streamlit_app.py" target="_blank">streamlit_app.py</a>
+- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit/environment.yml" target="_blank">environment.yml</a>
 
 ### Step 2: Upload to Stage
 
