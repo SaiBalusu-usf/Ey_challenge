@@ -93,45 +93,25 @@ In this step, you'll create all the Snowflake objects needed for the Network Ope
 Run the setup script to create:
 - **Database**: `NETWORK_OPERATIONS` with 7 schemas (RAN_4G, RAN_5G, CORE_4G, CORE_5G, TRANSPORT, ANALYTICS, STAGING)
 - **Warehouses**: `NETWORK_OPS_WH` for queries, `NETWORK_OPS_BUILD_WH` for data loading
+- **GitHub External Access Integration**: For automatic data loading from GitHub
 - **Stages**: `CSV_DATA` for data files, `STREAMLIT_STAGE` for app deployment
 - **Tables**: Dimension and fact tables for network data
-
-### Step 3: Download Data Files
-
-Download the CSV data files from the GitHub repository:
-
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/DIM_CELL_SITE.csv" target="_blank">DIM_CELL_SITE.csv</a> (450 sites)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/DIM_NETWORK_ELEMENT.csv" target="_blank">DIM_NETWORK_ELEMENT.csv</a> (480 elements)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/ENODEB_PERFORMANCE.csv" target="_blank">ENODEB_PERFORMANCE.csv</a> (426K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/GNODEB_PERFORMANCE.csv" target="_blank">GNODEB_PERFORMANCE.csv</a> (178K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/FACT_RAN_PERFORMANCE.csv" target="_blank">FACT_RAN_PERFORMANCE.csv</a> (604K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/FACT_CORE_PERFORMANCE.csv" target="_blank">FACT_CORE_PERFORMANCE.csv</a> (13K records)
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/TRANSPORT_DEVICE_PERFORMANCE.csv" target="_blank">TRANSPORT_DEVICE_PERFORMANCE.csv</a> (604K records)
-- Core element files: <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/MME_4G.csv" target="_blank">MME_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/SGW_4G.csv" target="_blank">SGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/PGW_4G.csv" target="_blank">PGW_4G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/AMF_5G.csv" target="_blank">AMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/SMF_5G.csv" target="_blank">SMF_5G.csv</a>, <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/csvs/UPF_5G.csv" target="_blank">UPF_5G.csv</a>
-
-### Step 4: Upload Data to Stage
-
-1. In Snowsight, navigate to `Data` → `Databases` → `NETWORK_OPERATIONS` → `STAGING`
-2. Click on the `CSV_DATA` stage
-3. Click `+ Files` and upload all downloaded CSV files
-
-![Upload Data Files](assets/upload_data.png)
 
 <!-- ------------------------ -->
 ## Load Data
 
-### Step 1: Load Dimension and Fact Tables
+The setup script automatically loads all data from GitHub using an External Access Integration. No manual file downloads required!
 
-Continue running the setup script to load data into all tables. The script includes COPY INTO commands for:
-- **Dimension tables**: DIM_CELL_SITE, DIM_NETWORK_ELEMENT
-- **RAN tables**: ENODEB_PERFORMANCE, GNODEB_PERFORMANCE
-- **Core tables**: MME_4G, SGW_4G, PGW_4G, AMF_5G, SMF_5G, UPF_5G
-- **Transport tables**: TRANSPORT_DEVICE_PERFORMANCE
-- **Analytics tables**: FACT_RAN_PERFORMANCE, FACT_CORE_PERFORMANCE
+### Step 1: Data Loading
+
+The script creates a `LOAD_DATA_FROM_GITHUB()` procedure that:
+1. Connects to GitHub using the External Access Integration
+2. Downloads all 13 CSV files directly from the repository
+3. Loads data into the appropriate tables
 
 ### Step 2: Verify Data Load
 
-After running the data loading section, verify the record counts:
+After running the setup script, verify the record counts:
 
 | TABLE_NAME | RECORD_COUNT |
 |------------|--------------|
@@ -143,23 +123,16 @@ After running the data loading section, verify the record counts:
 <!-- ------------------------ -->
 ## Deploy Streamlit Application
 
-### Step 1: Download Streamlit Files
+The setup script also automatically downloads and deploys the Streamlit application from GitHub!
 
-Download the Streamlit application files from GitHub:
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit/streamlit_app.py" target="_blank">streamlit_app.py</a>
-- <a href="https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit/environment.yml" target="_blank">environment.yml</a>
+### Step 1: Streamlit Deployment
 
-### Step 2: Upload to Stage
+The script creates a `LOAD_STREAMLIT_FROM_GITHUB()` procedure that:
+1. Downloads `streamlit_app.py` and `environment.yml` from GitHub
+2. Uploads them to the `STREAMLIT_STAGE`
+3. Creates the `NETWORK_OPS_DASHBOARD` Streamlit application
 
-1. In Snowsight, navigate to `Data` → `Databases` → `NETWORK_OPERATIONS` → `STAGING`
-2. Click on the `STREAMLIT_STAGE` stage
-3. Upload both `streamlit_app.py` and `environment.yml`
-
-### Step 3: Create Streamlit App
-
-Run the Streamlit creation section from the setup script. This creates the `NETWORK_OPS_DASHBOARD` application.
-
-### Step 4: Launch the Dashboard
+### Step 2: Launch the Dashboard
 
 1. In Snowsight, navigate to `Projects` → `Streamlit`
 2. Find `NETWORK_OPS_DASHBOARD` in the list
