@@ -7,7 +7,7 @@ language: en
 status: Published
 feedback link: https://github.com/Snowflake-Labs/sfguides/issues
 tags: Getting Started, Telecom, Network Operations, Streamlit, Snowflake Intelligence, Cortex, Semantic View, 5G, 4G
-fork repo link: https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence
+fork repo link: https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics
 
 # End-to-End Telecom Network Operations Reporting and Analytics
 
@@ -86,7 +86,7 @@ In this step, you'll create all the Snowflake objects needed for the Network Ope
 1. In Snowsight, click `Projects`, then `Workspaces` in the left navigation, or [click here](https://app.snowflake.com/_deeplink/#/workspaces?utm_source=quickstart&utm_medium=quickstart&utm_campaign=-us-en-all&utm_content=app-network-operations-reporting-analytics-snowflake-intelligence) to go there directly
 2. Click `+ Add new` to create a new Workspace
 3. Click `SQL File` to create a new SQL file
-4. Copy the setup script from [setup.sql](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/setup.sql) and paste it into your SQL file
+4. Copy the setup script from [setup.sql](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/setup.sql) and paste it into your SQL file
 
 ### Step 2: Run Infrastructure Setup
 
@@ -113,14 +113,14 @@ CREATE SCHEMA IF NOT EXISTS NETWORK_OPERATIONS.STAGING;
 
 Download the CSV data files from the GitHub repository:
 
-- [DIM_CELL_SITE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/DIM_CELL_SITE.csv) (450 sites)
-- [DIM_NETWORK_ELEMENT.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/DIM_NETWORK_ELEMENT.csv) (480 elements)
-- [ENODEB_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/ENODEB_PERFORMANCE.csv) (426K records)
-- [GNODEB_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/GNODEB_PERFORMANCE.csv) (178K records)
-- [FACT_RAN_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/FACT_RAN_PERFORMANCE.csv) (604K records)
-- [FACT_CORE_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/FACT_CORE_PERFORMANCE.csv) (13K records)
-- [TRANSPORT_DEVICE_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/TRANSPORT_DEVICE_PERFORMANCE.csv) (604K records)
-- Core element files: [MME_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/MME_4G.csv), [SGW_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/SGW_4G.csv), [PGW_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/PGW_4G.csv), [AMF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/AMF_5G.csv), [SMF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/SMF_5G.csv), [UPF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/UPF_5G.csv)
+- [DIM_CELL_SITE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_CELL_SITE.csv) (450 sites)
+- [DIM_NETWORK_ELEMENT.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/DIM_NETWORK_ELEMENT.csv) (480 elements)
+- [ENODEB_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/ENODEB_PERFORMANCE.csv) (426K records)
+- [GNODEB_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/GNODEB_PERFORMANCE.csv) (178K records)
+- [FACT_RAN_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_RAN_PERFORMANCE.csv) (604K records)
+- [FACT_CORE_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/FACT_CORE_PERFORMANCE.csv) (13K records)
+- [TRANSPORT_DEVICE_PERFORMANCE.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/TRANSPORT_DEVICE_PERFORMANCE.csv) (604K records)
+- Core element files: [MME_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/MME_4G.csv), [SGW_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SGW_4G.csv), [PGW_4G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/PGW_4G.csv), [AMF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/AMF_5G.csv), [SMF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/SMF_5G.csv), [UPF_5G.csv](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/UPF_5G.csv)
 
 ### Step 4: Upload Data to Stage
 
@@ -198,8 +198,8 @@ Expected output:
 ### Step 1: Download Streamlit Files
 
 Download the Streamlit application files from GitHub:
-- [streamlit_app.py](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/streamlit_app.py)
-- [environment.yml](https://github.com/Snowflake-Labs/sfguide-telecom-network-ops-intelligence/blob/main/assets/scripts/environment.yml)
+- [streamlit_app.py](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/streamlit_app.py)
+- [environment.yml](https://github.com/Snowflake-Labs/sfguide-telecom-network-operations-analytics/blob/main/scripts/environment.yml)
 
 ### Step 2: Upload to Stage
 
