@@ -206,33 +206,22 @@ The Executive dashboard focuses on business impact:
 </details>
 
 <!-- ------------------------ -->
-## Create Semantic View
+## Snowflake Intelligence
 
-A Semantic View enables natural language queries against your network data.
+The setup script automatically creates the Semantic View and Snowflake Intelligence Agent:
 
-### Step 1: Create the Semantic View
-
-Run the semantic view creation section from the setup script. This creates `NETWORK_SEMANTIC_VIEW` with:
+**Semantic View** (`NETWORK_SEMANTIC_VIEW`):
 - Table definitions for DIM_CELL_SITE and FACT_RAN_PERFORMANCE
 - Column descriptions for natural language understanding
 - Relationships between dimension and fact tables
 - Verified queries for common analysis patterns
 
-### Step 2: Verify the Semantic View
-
-The setup script includes a DESCRIBE command to verify the semantic view was created successfully.
-
-<!-- ------------------------ -->
-## Configure Snowflake Intelligence Agent
-
-### Step 1: Create the Agent
-
-Run the agent creation section from the setup script. This creates the `NETWORK_OPERATIONS_AGENT` with:
-- Claude 3.5 Sonnet model for natural language understanding
+**Snowflake Intelligence Agent** (`NETWORK_OPERATIONS_AGENT`):
+- Uses Snowflake's default orchestration model for natural language understanding
 - System prompt configured for telecom domain expertise
 - Semantic View tool for data access
 
-### Step 2: Test the Agent
+### Test the Agent
 
 Navigate to Snowflake Intelligence in Snowsight and try these persona-specific queries:
 
