@@ -414,9 +414,4 @@ Congratulations! You have successfully built a comprehensive telecom network ope
 
 **Snowflake Documentation:**
 - <a href="https://docs.snowflake.com/en/developer-guide/streamlit/about-streamlit" target="_blank">Streamlit in Snowflake</a>
-- <a href="https://docs.snowflake.com/en/user-guide/views-semantic" target="_blank">Semantic Views</a>
 - <a href="https://docs.snowflake.com/en/user-guide/snowflake-intelligence/overview" target="_blank">Snowflake Intelligence</a>
-
-**Industry Resources:**
-- <a href="https://www.3gpp.org/" target="_blank">3GPP Network Standards</a>
-- <a href="https://www.tmforum.org/" target="_blank">TM Forum Operations Frameworks</a>
