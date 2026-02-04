@@ -1,9 +1,0 @@
-name: streamlit_env
-channels:
-  - snowflake
-dependencies:
-  - streamlit
-  - plotly
-  - pydeck
-  - python-graphviz
-
