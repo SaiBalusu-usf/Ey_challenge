@@ -65,7 +65,7 @@ The Network Operations solution provides end-to-end visibility across telecom in
 | Persona | Focus Area | Key Metrics |
 |---------|------------|-------------|
 | **Network Engineer** | Real-time troubleshooting | MTTD, MTTR, Alarms |
-| **Performance Analyst** | Capacity planning | PRB Utilization, Throughput |
+| **Network Performance** | Capacity planning | PRB Utilization, Throughput |
 | **Network Manager** | SLA management | Success Rates, Coverage |
 | **Executive** | Business impact | Revenue at Risk, Churn |
 
@@ -138,6 +138,8 @@ The script creates a `LOAD_STREAMLIT_FROM_GITHUB()` procedure that:
 2. Find `NETWORK_OPS_DASHBOARD` in the list
 3. Click to open the application
 
+<button>[Launch Streamlit Dashboard](https://app.snowflake.com/_deeplink/#/streamlit-apps/NETWORK_OPERATIONS.ANALYTICS.NETWORK_OPS_DASHBOARD)</button>
+
 ![Streamlit Dashboard](assets/streamlit_dashboard.png)
 
 <!-- ------------------------ -->
@@ -155,11 +157,11 @@ The Network Engineer dashboard focuses on real-time troubleshooting:
 - **Cell Site Map**: 3D visualization of network topology
 - **Drill-down Analysis**: Click any site for detailed metrics
 
-### Performance Analyst View
+### Network Performance View
 
-The Performance Analyst dashboard focuses on capacity planning:
+The Network Performance dashboard focuses on capacity planning:
 
-![Performance Analyst Dashboard](assets/dashboard_analyst.png)
+![Network Performance Dashboard](assets/dashboard_analyst.png)
 
 **Key Features:**
 - **PRB Utilization Trends**: Physical Resource Block usage over time
@@ -262,7 +264,7 @@ Track cells with handover failures impacting mobile subscribers. Poor handover s
 </details>
 
 <details>
-<summary><strong>Performance Analyst</strong></summary>
+<summary><strong>Network Performance</strong></summary>
 
 **1. Technology Comparison**
 
@@ -390,6 +392,8 @@ Understand what percentage of the network meets SLA targets. This key metric ind
 
 </details>
 
+<button>[Launch Network Operations Agent](https://app.snowflake.com/_deeplink/#/agents/database/NETWORK_OPERATIONS/schema/ANALYTICS/agent/NETWORK_OPERATIONS_AGENT/details)</button>
+
 ![Snowflake Intelligence](assets/snowflake_intelligence.png)
 
 <!-- ------------------------ -->
@@ -421,7 +425,7 @@ Congratulations! You have successfully built a comprehensive telecom network ope
 | Persona | Key Benefit | Estimated Value |
 |---------|-------------|-----------------|
 | Network Engineer | 40% faster issue detection | €230K-275K/year |
-| Performance Analyst | Proactive capacity planning | €1.2M/year |
+| Network Performance | Proactive capacity planning | €1.2M/year |
 | Network Manager | SLA protection | €870K/year |
 | Executive | Reduced churn | €9.9M/year |
 
