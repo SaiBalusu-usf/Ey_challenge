@@ -145,12 +145,9 @@ The script creates a `LOAD_STREAMLIT_FROM_GITHUB()` procedure that:
 <!-- ------------------------ -->
 ## Explore the Dashboards
 
-<details>
-<summary><big><b>Network Engineer View</b></big></summary>
+### Network Engineer View
 
 The Network Engineer dashboard focuses on real-time troubleshooting:
-
-![Network Engineer Dashboard](assets/img/dashboard_network_engineer.png)
 
 **Key Features:**
 - **Active Alarms**: Real-time alarm monitoring with severity levels
@@ -158,14 +155,11 @@ The Network Engineer dashboard focuses on real-time troubleshooting:
 - **Cell Site Map**: 3D visualization of network topology
 - **Drill-down Analysis**: Click any site for detailed metrics
 
-</details>
+![Network Engineer Dashboard](assets/img/dashboard_network_engineer.png)
 
-<details>
-<summary><big><b>Network Performance View</b></big></summary>
+### Network Performance View
 
 The Network Performance dashboard focuses on capacity planning:
-
-![Network Performance Dashboard](assets/img/dashboard_analyst.png)
 
 **Key Features:**
 - **PRB Utilization Trends**: Physical Resource Block usage over time
@@ -173,14 +167,11 @@ The Network Performance dashboard focuses on capacity planning:
 - **Capacity Forecasting**: Predictive capacity trends
 - **Comparative Analysis**: Site-to-site performance comparison
 
-</details>
+![Network Performance Dashboard](assets/img/dashboard_analyst.png)
 
-<details>
-<summary><big><b>Network Manager View</b></big></summary>
+### Network Manager View
 
 The Network Manager dashboard focuses on SLA management:
-
-![Network Manager Dashboard](assets/img/dashboard_manager.png)
 
 **Key Features:**
 - **SLA Compliance**: Real-time SLA tracking
@@ -188,14 +179,11 @@ The Network Manager dashboard focuses on SLA management:
 - **Coverage Analysis**: Network coverage gaps
 - **Executive Summary**: High-level operational status
 
-</details>
+![Network Manager Dashboard](assets/img/dashboard_manager.png)
 
-<details>
-<summary><big><b>Executive View</b></big></summary>
+### Executive View
 
 The Executive dashboard focuses on business impact:
-
-![Executive Dashboard](assets/img/dashboard_executive.png)
 
 **Key Features:**
 - **Revenue at Risk**: Financial impact of network issues
@@ -203,7 +191,7 @@ The Executive dashboard focuses on business impact:
 - **Strategic KPIs**: High-level performance indicators
 - **Trend Analysis**: Month-over-month comparisons
 
-</details>
+![Executive Dashboard](assets/img/dashboard_executive.png)
 
 <!-- ------------------------ -->
 ## Snowflake Intelligence
@@ -225,8 +213,7 @@ The setup script automatically creates the Semantic View and Snowflake Intellige
 
 Navigate to Snowflake Intelligence in Snowsight and try these persona-specific queries:
 
-<details>
-<summary><big><b>Network Engineer (NOC/Field)</b></big></summary>
+### Network Engineer (NOC/Field)
 
 **1. RRC Success Rate Troubleshooting**
 
@@ -266,10 +253,7 @@ Track cells with handover failures impacting mobile subscribers. Poor handover s
 
 **What It Shows:** Mobility performance analysis for seamless subscriber experience
 
-</details>
-
-<details>
-<summary><big><b>Network Performance</b></big></summary>
+### Network Performance
 
 **1. Technology Comparison**
 
@@ -309,10 +293,7 @@ Identify regions with the highest congestion risk based on utilization patterns.
 
 **What It Shows:** Risk-based prioritization for network investment decisions
 
-</details>
-
-<details>
-<summary><big><b>Network Manager (Operations)</b></big></summary>
+### Network Manager (Operations)
 
 **1. SLA Compliance Overview**
 
@@ -352,10 +333,7 @@ Compare Norte vs Sul performance for resource allocation decisions. Regional ben
 
 **What It Shows:** Cross-regional analysis for balanced operational coverage
 
-</details>
-
-<details>
-<summary><big><b>Executive (C-Level)</b></big></summary>
+### Executive (C-Level)
 
 **1. Network Health Overview**
 
@@ -394,8 +372,6 @@ Understand what percentage of the network meets SLA targets. This key metric ind
 > What percentage of our network meets SLA targets?
 
 **What It Shows:** Compliance scorecard for customer commitments and regulatory reporting
-
-</details>
 
 <a href="https://app.snowflake.com/_deeplink/#/agents/database/NETWORK_OPERATIONS/schema/ANALYTICS/agent/NETWORK_OPERATIONS_AGENT/details" target="_blank">Launch Network Operations Agent</a>
 
