@@ -403,13 +403,195 @@ CREATE OR REPLACE AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.NETWORK_OPERATIONS_AGENT
 
 ### Step 2: Test the Agent
 
-Navigate to Snowflake Intelligence in Snowsight and try these queries:
+Navigate to Snowflake Intelligence in Snowsight and try these persona-specific queries:
 
-**Example Queries:**
-- "What are the top 5 worst performing cell sites today?"
-- "Show me the average throughput by region"
-- "Which sites have RRC success rate below 95%?"
-- "Compare 4G vs 5G network performance"
+<details>
+<summary><strong>Network Engineer (NOC/Field)</strong></summary>
+
+**1. RRC Success Rate Troubleshooting**
+
+Identify cells falling below the 95% RRC success rate target. This is the first indicator of connection issues that affect subscriber experience and requires immediate attention from field teams.
+
+```
+Which cells have RRC success below 95% right now?
+```
+**What It Shows:** Real-time fault detection for proactive troubleshooting before customer complaints
+
+---
+
+**2. Critical Capacity Alerts**
+
+Find sites with PRB utilization above 85% (critical threshold). These sites are at risk of congestion and degraded service quality during peak hours.
+
+```
+Show me the top 10 sites with critical PRB utilization above 85%
+```
+**What It Shows:** Capacity hotspots requiring immediate attention or traffic offloading
+
+---
+
+**3. 5G Session Issues**
+
+Identify 5G cells with PDU session establishment problems. Low PDU success rates indicate issues with 5G core connectivity affecting new-generation services.
+
+```
+Which 5G cells in Lisboa have PDU session issues?
+```
+**What It Shows:** 5G-specific troubleshooting for next-gen network quality
+
+---
+
+**4. Handover Failures**
+
+Track cells with handover failures impacting mobile subscribers. Poor handover success causes dropped calls and interrupted data sessions during movement.
+
+```
+List cells with handover failures in the last 24 hours
+```
+**What It Shows:** Mobility performance analysis for seamless subscriber experience
+
+</details>
+
+<details>
+<summary><strong>Performance Analyst</strong></summary>
+
+**1. Technology Comparison**
+
+Compare average throughput between 4G and 5G across regions. This analysis supports technology migration planning and validates 5G investment ROI.
+
+```
+Compare average throughput between 4G and 5G by region
+```
+**What It Shows:** Technology benchmarking for strategic planning and 5G business case validation
+
+---
+
+**2. Regional Trend Analysis**
+
+Analyze PRB utilization trends to predict capacity needs. Understanding patterns helps optimize network resources before congestion occurs.
+
+```
+What is the PRB utilization trend for Porto this week?
+```
+**What It Shows:** Trend analysis for proactive capacity planning
+
+---
+
+**3. Uplink vs Downlink Performance**
+
+Compare upload and download performance by technology. Balanced performance is critical for video conferencing and cloud applications.
+
+```
+Show uplink vs downlink performance by technology
+```
+**What It Shows:** Bidirectional performance analysis for QoE optimization
+
+---
+
+**4. Congestion Risk Assessment**
+
+Identify regions with the highest congestion risk based on utilization patterns. Early warning enables preventive capacity expansion.
+
+```
+Which regions have the highest congestion risk?
+```
+**What It Shows:** Risk-based prioritization for network investment decisions
+
+</details>
+
+<details>
+<summary><strong>Network Manager (Operations)</strong></summary>
+
+**1. SLA Compliance Overview**
+
+Monitor how many sites are currently below SLA targets. This executive metric drives operational focus and resource allocation decisions.
+
+```
+How many sites are currently below SLA targets?
+```
+**What It Shows:** Operational health scorecard for management reporting
+
+---
+
+**2. Capacity Planning Data**
+
+Review availability metrics by city to inform capacity planning. Geographic insights support data-driven infrastructure investment.
+
+```
+Show availability metrics by city for capacity planning
+```
+**What It Shows:** Regional performance data for CAPEX planning and budget allocation
+
+---
+
+**3. Regional Priority Assessment**
+
+Determine which region has the most sites needing attention. This helps prioritize field team deployment and maintenance scheduling.
+
+```
+Which region has the most sites needing attention?
+```
+**What It Shows:** Resource allocation intelligence for operational efficiency
+
+---
+
+**4. Regional Performance Comparison**
+
+Compare Norte vs Sul performance for resource allocation decisions. Regional benchmarking supports fair and effective team distribution.
+
+```
+Compare Norte vs Sul performance for resource allocation
+```
+**What It Shows:** Cross-regional analysis for balanced operational coverage
+
+</details>
+
+<details>
+<summary><strong>Executive (C-Level)</strong></summary>
+
+**1. Network Health Overview**
+
+Get a high-level view of overall network health across Portugal. This board-ready metric summarizes infrastructure performance in business terms.
+
+```
+What is our overall network health across Portugal?
+```
+**What It Shows:** Executive dashboard summary for board reporting and investor communications
+
+---
+
+**2. 5G Investment ROI**
+
+Compare 5G vs 4G performance to validate technology investment. Demonstrates return on 5G CAPEX through measurable performance improvements.
+
+```
+Show 5G vs 4G performance summary for board reporting
+```
+**What It Shows:** Technology ROI validation for strategic investment justification
+
+---
+
+**3. Investment Prioritization**
+
+Identify which regions should be prioritized for network investment. Data-driven recommendations support CAPEX allocation decisions.
+
+```
+Which regions should be prioritized for investment?
+```
+**What It Shows:** Strategic investment guidance based on performance gaps and growth potential
+
+---
+
+**4. SLA Compliance Summary**
+
+Understand what percentage of the network meets SLA targets. This key metric indicates overall service quality and contractual compliance.
+
+```
+What percentage of our network meets SLA targets?
+```
+**What It Shows:** Compliance scorecard for customer commitments and regulatory reporting
+
+</details>
 
 ![Snowflake Intelligence](assets/snowflake_intelligence.png)
 
