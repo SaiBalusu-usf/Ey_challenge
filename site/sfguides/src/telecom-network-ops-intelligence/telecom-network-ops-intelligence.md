@@ -146,7 +146,7 @@ The script creates a `LOAD_STREAMLIT_FROM_GITHUB()` procedure that:
 ## Explore the Dashboards
 
 <details>
-<summary><h3>Network Engineer View</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Network Engineer View</span></summary>
 
 The Network Engineer dashboard focuses on real-time troubleshooting:
 
@@ -161,7 +161,7 @@ The Network Engineer dashboard focuses on real-time troubleshooting:
 </details>
 
 <details>
-<summary><h3>Network Performance View</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Network Performance View</span></summary>
 
 The Network Performance dashboard focuses on capacity planning:
 
@@ -176,7 +176,7 @@ The Network Performance dashboard focuses on capacity planning:
 </details>
 
 <details>
-<summary><h3>Network Manager View</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Network Manager View</span></summary>
 
 The Network Manager dashboard focuses on SLA management:
 
@@ -191,7 +191,7 @@ The Network Manager dashboard focuses on SLA management:
 </details>
 
 <details>
-<summary><h3>Executive View</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Executive View</span></summary>
 
 The Executive dashboard focuses on business impact:
 
@@ -226,7 +226,7 @@ The setup script automatically creates the Semantic View and Snowflake Intellige
 Navigate to Snowflake Intelligence in Snowsight and try these persona-specific queries:
 
 <details>
-<summary><h3>Network Engineer (NOC/Field)</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Network Engineer (NOC/Field)</span></summary>
 
 **1. RRC Success Rate Troubleshooting**
 
@@ -269,7 +269,7 @@ Track cells with handover failures impacting mobile subscribers. Poor handover s
 </details>
 
 <details>
-<summary><h3>Network Performance</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Network Performance</span></summary>
 
 **1. Technology Comparison**
 
@@ -312,7 +312,7 @@ Identify regions with the highest congestion risk based on utilization patterns.
 </details>
 
 <details>
-<summary><h3>Network Manager (Operations)</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Network Manager (Operations)</span></summary>
 
 **1. SLA Compliance Overview**
 
@@ -355,7 +355,7 @@ Compare Norte vs Sul performance for resource allocation decisions. Regional ben
 </details>
 
 <details>
-<summary><h3>Executive (C-Level)</h3></summary>
+<summary><span style="font-size:1.2em;font-weight:600">Executive (C-Level)</span></summary>
 
 **1. Network Health Overview**
 
