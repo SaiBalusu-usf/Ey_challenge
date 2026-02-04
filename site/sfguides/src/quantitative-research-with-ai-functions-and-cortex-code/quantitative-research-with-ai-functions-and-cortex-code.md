@@ -23,27 +23,11 @@ This guide uses publicly available earnings call data from Dow Jones 30 companie
 - Build and deploy predictive Machine Learning (ML) models in minutes with the conversational power of Cortex Code.
 - Create an intelligent, unified conversational agent accessible through Snowflake Intelligence.
 
-## Build with Cortex Code
+## Architecture
 
-**Cortex Code** is an AI-driven intelligent agent integrated into the Snowflake platform, optimized for complex data engineering, analytics, machine learning, and agent-building tasks. It uses an autonomous agent framework to interact directly with your Snowflake environment, with deep understanding of Snowflake's Role-Based Access Control (RBAC), schemas, and best practices.
+![Research Pipeline Architecture](assets/architecture-diagram.png)
 
-**Available in two interfaces, enabling different personas:**
-- **Snowsight (Analyst/Data Scientist)** - Click the Cortex Code icon in Notebooks or Workspaces. Cortex Code allows subject matter experts (Quants, Analysts) to rapidly generate complex code from natural language, explain existing queries, and review AI-suggested changes, saving significant time otherwise spent on boilerplate coding.
-- **CLI (Developer/Engineer)** - Provides an agentic shell for power users, bridging the local development environment (VS Code, Cursor) and your Snowflake account. It can read/write local files, execute SQL, run bash commands, and manage dbt projects or Streamlit apps, accelerating the developer workflow.
-
-**What makes this guide unique:** Rather than just running pre-built notebooks, you can use Cortex Code to build the entire ML pipeline through conversation—from feature engineering to model training, backtesting, and registration in the Snowflake ML Registry.
-
-## Key Features
-
-**AI-Powered Sentiment Extraction**: Use Cortex AI Functions's `AI_COMPLETE()` function with Claude (`claude-4-sonnet`) to analyze earnings call transcripts and extract structured sentiment scores (1-10 scale), analyst participation counts, and human-readable reasoning—all from unstructured text.
-
-**Momentum-Based ML Predictions**: Train LightGBM models on technical momentum features using walk-forward quarterly validation, then register them in Snowflake's ML Model Registry for production inference.
-
-**Semantic Search Over Sentiment**: Create Cortex Search services that enable natural language queries like "find companies with margin concerns" or "show bullish analyst sentiment"—without managing embeddings or vector databases.
-
-**Natural Language Analytics**: Build semantic views for Cortex Analyst that allow business users to query sentiment data with plain English questions like "Which companies have the highest analyst sentiment?"
-
-**Unified Conversational Interface**: Deploy a Cortex Agent that combines text-to-SQL (Cortex Analyst), semantic search (Cortex Search), ML predictions (stored procedures), and email notifications into a single chat experience via Snowflake Intelligence.
+The architecture shows how Cortex Code serves as the central AI coding assistant throughout the pipeline—from data ingestion using **Snowflake Public Data (Free)** from Snowflake Marketplace, to sentiment extraction with Cortex AI Functions, ML model training and registry, and finally the unified agent experience in Snowflake Intelligence.
 
 ## How It Works
 
@@ -63,11 +47,27 @@ This guide leverages Snowflake's native AI features to create a seamless, end-to
 
 **Snowflake Intelligence**: The conversational interface where users interact with the Cortex Agent. Users can ask complex multi-step questions, and the agent coordinates the appropriate tools to provide comprehensive answers.
 
-## Architecture
+## Build with Cortex Code
 
-![Research Pipeline Architecture](assets/architecture-diagram.png)
+**Cortex Code** is an AI-driven intelligent agent integrated into the Snowflake platform, optimized for complex data engineering, analytics, machine learning, and agent-building tasks. It uses an autonomous agent framework to interact directly with your Snowflake environment, with deep understanding of Snowflake's Role-Based Access Control (RBAC), schemas, and best practices.
 
-The architecture shows how Cortex Code serves as the central AI coding assistant throughout the pipeline—from data ingestion using **Snowflake Public Data (Free)** from Snowflake Marketplace, to sentiment extraction with Cortex AI Functions, ML model training and registry, and finally the unified agent experience in Snowflake Intelligence.
+**Available in two interfaces, enabling different personas:**
+- **Snowsight (Analyst/Data Scientist)** - Click the Cortex Code icon in Notebooks or Workspaces. Cortex Code allows subject matter experts (Quants, Analysts) to rapidly generate complex code from natural language, explain existing queries, and review AI-suggested changes, saving significant time otherwise spent on boilerplate coding.
+- **CLI (Developer/Engineer)** - Provides an agentic shell for power users, bridging the local development environment and your Snowflake account. It can read/write local files, execute SQL, run bash commands, and manage dbt projects or Streamlit apps, accelerating the developer workflow.
+
+**What makes this guide unique:** Rather than just running pre-built notebooks, you can use Cortex Code to build the entire ML pipeline through conversation—from feature engineering to model training, backtesting, and registration in the Snowflake ML Registry.
+
+## Key Features
+
+**AI-Powered Sentiment Extraction**: Use Cortex AI Functions's `AI_COMPLETE()` function with Claude (`claude-4-sonnet`) to analyze earnings call transcripts and extract structured sentiment scores (1-10 scale), analyst participation counts, and human-readable reasoning—all from unstructured text.
+
+**Momentum-Based ML Predictions**: Train LightGBM models on technical momentum features using walk-forward quarterly validation, then register them in Snowflake's ML Model Registry for production inference.
+
+**Semantic Search Over Sentiment**: Create Cortex Search services that enable natural language queries like "find companies with margin concerns" or "show bullish analyst sentiment"—without managing embeddings or vector databases.
+
+**Natural Language Analytics**: Build semantic views for Cortex Analyst that allow business users to query sentiment data with plain English questions like "Which companies have the highest analyst sentiment?"
+
+**Unified Conversational Interface**: Deploy a Cortex Agent that combines text-to-SQL (Cortex Analyst), semantic search (Cortex Search), ML predictions (stored procedures), and email notifications into a single chat experience via Snowflake Intelligence.
 
 ## Business Impact
 
