@@ -253,6 +253,9 @@ Track cells with handover failures impacting mobile subscribers. Poor handover s
 
 **What It Shows:** Mobility performance analysis for seamless subscriber experience
 
+<br>
+<br>
+
 ### Network Performance
 
 **1. Technology Comparison**
@@ -293,6 +296,9 @@ Identify regions with the highest congestion risk based on utilization patterns.
 
 **What It Shows:** Risk-based prioritization for network investment decisions
 
+<br>
+<br>
+
 ### Network Manager (Operations)
 
 **1. SLA Compliance Overview**
@@ -332,6 +338,9 @@ Compare Norte vs Sul performance for resource allocation decisions. Regional ben
 > Compare Norte vs Sul performance for resource allocation
 
 **What It Shows:** Cross-regional analysis for balanced operational coverage
+
+<br>
+<br>
 
 ### Executive (C-Level)
 
